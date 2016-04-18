@@ -3,6 +3,8 @@ package com.example.oyvin.zuiq;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.example.oyvin.zuiq.states.StartState;
+
 import sheep.game.Game;
 
 public class MainActivity extends Activity {
@@ -13,7 +15,7 @@ public class MainActivity extends Activity {
         // Create the game.
         Game game = new Game(this, null);
         // Push the main state.
-        //game.pushState(PauseState.getInstance());
+        game.pushState(StartState.getInstance());
         // View the game.
         setContentView(game);
 
