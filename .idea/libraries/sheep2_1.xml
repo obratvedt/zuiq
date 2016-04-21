@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sheep2.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Zuiq/app/libs/sheep2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
