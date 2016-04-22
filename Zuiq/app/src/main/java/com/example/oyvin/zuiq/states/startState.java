@@ -22,7 +22,7 @@ public class StartState extends BackgroundState {
         Image logoImg = new Image(R.drawable.logo);
         Image startBtnImg = new Image(R.drawable.startbtn);
         logo = new Logo(logoImg);
-        startBtn = new StartBtn(startBtnImg);
+        startBtn = new StartBtn(startBtnImg, "config");
         this.addTouchListener(startBtn);
 
 
