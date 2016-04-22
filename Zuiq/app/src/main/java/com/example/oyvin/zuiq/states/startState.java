@@ -4,21 +4,26 @@ package com.example.oyvin.zuiq.states;
 import android.graphics.Canvas;
 
 import com.example.oyvin.zuiq.R;
-import com.example.oyvin.zuiq.sprites.Background;
+import com.example.oyvin.zuiq.sprites.Logo;
+import com.example.oyvin.zuiq.sprites.StartBtn;
 
-import sheep.game.State;
 import sheep.graphics.Image;
 
 
-public class StartState extends State {
+public class StartState extends BackgroundState {
     private static StartState startState = null;
-    private Background background;
+
+    Logo logo;
+    StartBtn startBtn;
 
 
-        private StartState(){
-            background = new Background(new Image(R.drawable.background));
-            background.setScale(2f,2f);
-
+    private StartState(){
+        super();
+        Image logoImg = new Image(R.drawable.logo);
+        Image startBtnImg = new Image(R.drawable.startbtn);
+        logo = new Logo(logoImg);
+        startBtn = new StartBtn(startBtnImg);
+        this.addTouchListener(startBtn);
 
 
     }
@@ -30,13 +35,20 @@ public class StartState extends State {
         return startState;
     }
 
-    public void draw (Canvas canvas){
+    public void draw (Canvas canvas) {
         super.draw(canvas);
-        background.draw(canvas);
+        logo.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 5.5f);
+        logo.draw(canvas);
+        startBtn.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 1.5f);
+        startBtn.draw(canvas);
+
+
 
     }
 
     public void update (float dt){
-
+        logo.update(dt);
+        startBtn.update(dt);
     }
+
 }
