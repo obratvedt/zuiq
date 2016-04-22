@@ -1,4 +1,4 @@
-package com.example.oyvin.zuiq.helpers;
+/*package com.example.oyvin.zuiq.helpers;
 
 public class FileOperations {
 
@@ -18,4 +18,4 @@ public class FileOperations {
         return result;
     }
 
-}
+}*/
