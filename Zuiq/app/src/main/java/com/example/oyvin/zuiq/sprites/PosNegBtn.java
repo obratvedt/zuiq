@@ -31,13 +31,31 @@ public class PosNegBtn extends Sprite implements TouchListener {
     public boolean onTouchDown(MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                if (type == "pos"){
+                if (type == "addPlayer"){
                     ConfigState.getInstance().setNoOfPlayers(1);
                 }
-                else if (type == "neg"){
+                else if (type == "removePlayer"){
                     ConfigState.getInstance().setNoOfPlayers(-1);
                 }
+                else if (type == "addSecond"){
+                    ConfigState.getInstance().setNoOfSeconds(1);
+                }
+                else if(type == "removeSecond"){
+                    ConfigState.getInstance().setNoOfSeconds(-1);
+                }
 
+                else if(type == "addQuestion"){
+                    ConfigState.getInstance().setNoOfQuestions(1);
+                }
+                else if (type == "removeQuestion"){
+                    ConfigState.getInstance().setNoOfQuestions(-1);
+                }
+                else if (type == "addScore"){
+                    ConfigState.getInstance().setScoreLimit(1);
+                }
+                else if (type == "removeScore"){
+                    ConfigState.getInstance().setScoreLimit(-1);
+                }
                 return true;
             }
         }

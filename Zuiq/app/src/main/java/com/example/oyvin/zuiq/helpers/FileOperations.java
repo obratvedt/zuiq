@@ -1,5 +1,5 @@
-/*
-package com.example.oyvin.zuiq.helpers;
+
+/*package com.example.oyvin.zuiq.helpers;
 
 import com.example.oyvin.zuiq.models.Answer;
 import com.example.oyvin.zuiq.models.Question;
