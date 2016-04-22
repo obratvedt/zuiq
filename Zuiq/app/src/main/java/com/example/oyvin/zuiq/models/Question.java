@@ -9,12 +9,14 @@ public class Question {
 
     private int id;
     private String text;
+    private String category;
     private ArrayList<Answer> answers;
     private Answer rightAnswer;
 
-    public Question(String text, ArrayList<Answer> answers, Answer rightAnswer) {
+    public Question(String text, ArrayList<Answer> answers, Answer rightAnswer, String category) {
         this.id = ++NUMBER_OF_QUESTIONS;
         this.text = text;
+        this.category = category;
         this.answers = answers;
         this.rightAnswer = rightAnswer;
     }
@@ -44,6 +46,14 @@ public class Question {
         this.text = text;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public ArrayList<Answer> getAnswers() {
         return answers;
     }
@@ -58,6 +68,11 @@ public class Question {
 
     public void setRightAnswer(Answer rightAnswer) {
         this.rightAnswer = rightAnswer;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("#%s %s {%s} Correct: [%s]", this.id, this.text, this.answers.size(), this.rightAnswer);
     }
 
 }
