@@ -1,0 +1,5 @@
+The intersecting lines drawn on maps and globes are
+latitudes
+longitudes
+*geographic grids
+none of the above
