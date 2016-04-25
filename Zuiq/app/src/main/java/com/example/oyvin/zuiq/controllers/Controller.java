@@ -10,7 +10,8 @@ public abstract class Controller {
         return game;
     }
 
-    public void setGame(Game game) {
+    public void initialize(Game game) {
         this.game = game;
     }
+
 }
