@@ -32,11 +32,9 @@ public class AnswerBtn extends Sprite implements TouchListener {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 
             if(touchOnSprite(motionEvent.getX(),motionEvent.getY())){
-                System.out.println("I am touched");;
-
+                System.out.println("I am touched");
+                return true;
             }
-
-            return true;
         }
         return false;
     }

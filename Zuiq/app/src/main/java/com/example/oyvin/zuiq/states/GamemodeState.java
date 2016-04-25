@@ -11,13 +11,13 @@ import com.example.oyvin.zuiq.sprites.OptionBtn;
 
 import sheep.graphics.Image;
 
-public class GamemodeState extends BackgroundState {
-    private static GamemodeState gamemodeState = null;
+public class GameModeState extends BackgroundState {
+    private static GameModeState gameModeState = null;
     Logo logo;
     OptionBtn questionnaireBtn, scoreRaceBtn;
     Paint buttonTextPaint;
 
-    private GamemodeState(){
+    private GameModeState(){
         super();
         Image logoImg = new Image(R.drawable.logo);
         Image questionnaireImg = new Image(R.drawable.optionbtn);
@@ -33,11 +33,11 @@ public class GamemodeState extends BackgroundState {
 
     }
 
-    public static GamemodeState getInstance(){
-        if (gamemodeState == null){
-            gamemodeState = new GamemodeState();
+    public static GameModeState getInstance(){
+        if (gameModeState == null){
+            gameModeState = new GameModeState();
         }
-        return gamemodeState;
+        return gameModeState;
     }
 
     public void draw(Canvas canvas){
