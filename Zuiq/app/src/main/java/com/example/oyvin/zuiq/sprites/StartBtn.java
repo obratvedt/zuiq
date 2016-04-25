@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 
 import com.example.oyvin.zuiq.states.ConfigState;
 import com.example.oyvin.zuiq.states.GameState;
-import com.example.oyvin.zuiq.states.GamemodeState;
+import com.example.oyvin.zuiq.states.GameModeState;
 import com.example.oyvin.zuiq.states.StartState;
 
 import sheep.game.Sprite;
@@ -41,7 +41,7 @@ public class StartBtn extends Sprite implements TouchListener{
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
                 if (state == "config") {
-                    StartState.getInstance().switchState(GamemodeState.getInstance());
+                    StartState.getInstance().switchState(GameModeState.getInstance());
                     return true;
                 }
                 else if (state == "start") {
