@@ -4,7 +4,7 @@ package com.example.oyvin.zuiq.sprites;
 import android.view.MotionEvent;
 
 import com.example.oyvin.zuiq.states.ConfigState;
-import com.example.oyvin.zuiq.states.GamemodeState;
+import com.example.oyvin.zuiq.states.GameModeState;
 
 import sheep.game.Sprite;
 import sheep.graphics.Image;
@@ -35,7 +35,7 @@ public class OptionBtn extends Sprite implements TouchListener{
     public boolean onTouchDown(MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                GamemodeState.getInstance().switchState(ConfigState.getInstance());
+                GameModeState.getInstance().switchState(ConfigState.getInstance());
                 ConfigState.getInstance().setGameMode(gameMode);
                 return true;
             }

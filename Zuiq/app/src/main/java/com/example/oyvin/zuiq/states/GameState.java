@@ -31,10 +31,11 @@ public class GameState extends BackgroundState {
 
     public void draw(Canvas canvas){
         super.draw(canvas);
-        answerBtnFirst.setPosition(canvas.getWidth()/2-200, canvas.getHeight()/2);
-        answerBtnScnd.setPosition(canvas.getWidth()/2+200, canvas.getHeight()/2);
+        answerBtnFirst.setPosition(canvas.getWidth() / 2 - 200, canvas.getHeight() / 2);
+        answerBtnScnd.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 2);
         answerBtnFirst.draw(canvas);
         answerBtnScnd.draw(canvas);
+        System.out.println(String.format("%s , %s", answerBtnFirst.getPosition(), answerBtnScnd.getPosition()));
 
     }
 
