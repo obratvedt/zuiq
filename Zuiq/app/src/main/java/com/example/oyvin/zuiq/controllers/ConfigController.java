@@ -3,6 +3,7 @@ package com.example.oyvin.zuiq.controllers;
 public class ConfigController extends Controller {
 
     private static ConfigController instance = null;
+    private int numberOfQuestions;
 
     private ConfigController() {
 
