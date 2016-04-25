@@ -40,6 +40,7 @@ public class GameState extends BackgroundState {
 
     public void draw(Canvas canvas){
         super.draw(canvas);
+<<<<<<< HEAD
         thisCanvas = canvas;
 
         ans1.setScale(0.4f, 0.4f);
@@ -82,6 +83,12 @@ public class GameState extends BackgroundState {
         ans2.draw(thisCanvas);
         ans3.draw(thisCanvas);
         ans4.draw(thisCanvas);
+=======
+        answerBtnFirst.setPosition(canvas.getWidth() / 2 - 200, canvas.getHeight() / 2);
+        answerBtnScnd.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 2);
+        answerBtnFirst.draw(canvas);
+        answerBtnScnd.draw(canvas);
+>>>>>>> ab6685223d17f778b7702ed09d038f4c32c7c761
 
     }
 

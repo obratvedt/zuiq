@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.example.oyvin.zuiq.R;
+import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
 import com.example.oyvin.zuiq.sprites.StartBtn;
 
@@ -16,6 +17,7 @@ import sheep.graphics.Image;
  */
 public class ConfigState extends BackgroundState {
     private static ConfigState configState = null;
+    private ConfigController controller;
     String gameMode;
     int noOfPlayers = 1;
     int noOfSeconds = 5;
@@ -75,11 +77,10 @@ public class ConfigState extends BackgroundState {
 
         setPositionOfSprites(canvas);
 
-
-        if(gameMode == "qn"){
+        if(controller.getGame().isQuestionnaire()){
             drawQuestionnaire(canvas);
         }
-        else if(gameMode == "sr"){
+        else {
             drawScoreRace(canvas);
         }
 
@@ -150,32 +151,6 @@ public class ConfigState extends BackgroundState {
         }
         else if(noOfPlayers >1 && noOfPlayers <= 5 && player < 0){
             noOfPlayers += player;
-        }
-    }
-    public void setNoOfSeconds(int second){
-        if(noOfSeconds >= 0 && noOfSeconds < 30 && second > 0){
-            noOfSeconds += second;
-        }
-        else if(noOfSeconds > 0 && noOfSeconds <= 30 && second <0){
-            noOfSeconds += second;
-        }
-    }
-
-    public void setNoOfQuestions(int question){
-        if(noOfQuestions >= 3 && noOfQuestions <30 && question >0){
-            noOfQuestions += question;
-        }
-        else if(noOfQuestions > 3 && noOfQuestions <=30 && question <0){
-            noOfQuestions += question;
-        }
-    }
-
-    public void setScoreLimit(int score){
-        if(scoreLimit >= 10 && scoreLimit < 100 && score >0){
-            scoreLimit += score;
-        }
-        else if(scoreLimit > 10 && scoreLimit <=100 && score <0){
-            scoreLimit += score;
         }
     }
 

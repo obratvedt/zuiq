@@ -18,8 +18,6 @@ public class BackgroundState extends State {
         background = new Background(backgroundImg);
     }
 
-
-
     public void draw (Canvas canvas){
         canvas.drawColor(Color.BLACK);
         background.setScale(canvas.getWidth() / background.getImageWidth(), canvas.getHeight() / background.getImageHeight());
@@ -35,4 +33,5 @@ public class BackgroundState extends State {
         getGame().popState();
         getGame().pushState(state);
     }
+
 }
