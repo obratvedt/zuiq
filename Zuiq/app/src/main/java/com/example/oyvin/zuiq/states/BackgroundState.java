@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 
 import com.example.oyvin.zuiq.R;
+import com.example.oyvin.zuiq.controllers.Controller;
 import com.example.oyvin.zuiq.sprites.Background;
 
 import sheep.game.State;
@@ -17,8 +18,6 @@ public class BackgroundState extends State {
         Image backgroundImg = new Image(R.drawable.background);
         background = new Background(backgroundImg);
     }
-
-
 
     public void draw (Canvas canvas){
         canvas.drawColor(Color.BLACK);
@@ -35,4 +34,5 @@ public class BackgroundState extends State {
         getGame().popState();
         getGame().pushState(state);
     }
+
 }

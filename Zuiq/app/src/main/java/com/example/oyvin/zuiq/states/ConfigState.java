@@ -5,8 +5,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.example.oyvin.zuiq.R;
+import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
 import com.example.oyvin.zuiq.sprites.StartBtn;
+
+import java.util.Objects;
 
 import sheep.game.State;
 import sheep.graphics.Image;
@@ -16,6 +19,7 @@ import sheep.graphics.Image;
  */
 public class ConfigState extends BackgroundState {
     private static ConfigState configState = null;
+    private ConfigController controller;
     String gameMode;
     int noOfPlayers = 1;
     int noOfSeconds = 5;
@@ -75,11 +79,10 @@ public class ConfigState extends BackgroundState {
 
         setPositionOfSprites(canvas);
 
-
-        if(gameMode == "qn"){
+        if(controller.getGame().isQuestionnaire()){
             drawQuestionnaire(canvas);
         }
-        else if(gameMode == "sr"){
+        else {
             drawScoreRace(canvas);
         }
 

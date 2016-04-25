@@ -57,7 +57,8 @@ public class Game {
     }
 
     public void setMaxPoints(int maxPoints) {
-        this.maxPoints = maxPoints;
+        if (maxPoints >= 10 && maxPoints <= 100)
+            this.maxPoints = maxPoints;
     }
 
     public int getMaxQuestions() {
