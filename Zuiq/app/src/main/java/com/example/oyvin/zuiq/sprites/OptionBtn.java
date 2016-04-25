@@ -3,6 +3,8 @@ package com.example.oyvin.zuiq.sprites;
 
 import android.view.MotionEvent;
 
+import com.example.oyvin.zuiq.controllers.ConfigController;
+import com.example.oyvin.zuiq.models.Game;
 import com.example.oyvin.zuiq.states.ConfigState;
 import com.example.oyvin.zuiq.states.GameModeState;
 
@@ -12,9 +14,9 @@ import sheep.input.TouchListener;
 
 public class OptionBtn extends Sprite implements TouchListener{
     float imageWidth, imageHeight;
-    String gameMode;
+    boolean gameMode;
 
-    public OptionBtn(Image image, String gameMode){
+    public OptionBtn(Image image, boolean gameMode){
         super(image);
         this.imageHeight = image.getHeight()/2;
         this.imageWidth = image.getWidth()/2;
@@ -35,8 +37,10 @@ public class OptionBtn extends Sprite implements TouchListener{
     public boolean onTouchDown(MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
+                Game game = new Game();
+                game.setQuestionnaire(gameMode);
+                ConfigController.getInstance().initialize(game);
                 GameModeState.getInstance().switchState(ConfigState.getInstance());
-                ConfigState.getInstance().setGameMode(gameMode);
                 return true;
             }
         }
