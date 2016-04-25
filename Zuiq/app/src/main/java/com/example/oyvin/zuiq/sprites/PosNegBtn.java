@@ -55,6 +55,7 @@ public class PosNegBtn extends Sprite implements TouchListener {
                 }
                 else if (type == "removeScore"){
                     ConfigState.getInstance().setScoreLimit(-1);
+
                 }
                 return true;
             }
