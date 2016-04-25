@@ -1,6 +1,6 @@
 package com.example.oyvin.zuiq.controllers;
 
-import com.example.oyvin.zuiq.models.Game;
+import com.example.oyvin.zuiq.Game;
 
 public abstract class Controller {
 

@@ -4,7 +4,7 @@ package com.example.oyvin.zuiq.sprites;
 import android.view.MotionEvent;
 
 import com.example.oyvin.zuiq.controllers.ConfigController;
-import com.example.oyvin.zuiq.models.Game;
+import com.example.oyvin.zuiq.Game;
 import com.example.oyvin.zuiq.states.ConfigState;
 import com.example.oyvin.zuiq.states.GameModeState;
 
