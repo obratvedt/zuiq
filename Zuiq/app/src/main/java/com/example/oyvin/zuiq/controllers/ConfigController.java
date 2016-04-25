@@ -1,5 +1,7 @@
 package com.example.oyvin.zuiq.controllers;
 
+import com.example.oyvin.zuiq.Game;
+
 public class ConfigController {
 
     private static ConfigController instance = null;
@@ -16,11 +18,11 @@ public class ConfigController {
     }
 
     public void addNumberOfPlayers(int add) {
-        getGame().setMaxPlayers(getGame().getMaxPlayers() + add);
+        Game.setMaxPlayers(Game.getMaxPlayers() + add);
     }
 
     public void addNumberOfSeconds(int add) {
-        getGame().setTimeLimit(getGame().getTimeLimit() + add);
+        Game.setTimeLimit(Game.getTimeLimit() + add);
     }
 
     public void addNumberOfQuestions(int add) {
@@ -28,7 +30,7 @@ public class ConfigController {
     }
 
     public void addScoreLimit(int add) {
-        getGame().setMaxPoints(add);
+        Game.setMaxPoints(add);
     }
 
 }

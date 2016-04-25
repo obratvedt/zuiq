@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.example.oyvin.zuiq.Game;
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
@@ -77,7 +78,7 @@ public class ConfigState extends BackgroundState {
 
         setPositionOfSprites(canvas);
 
-        if(controller.getGame().isQuestionnaire()){
+        if(Game.isQuestionnaire()){
             drawQuestionnaire(canvas);
         }
         else {
@@ -88,8 +89,8 @@ public class ConfigState extends BackgroundState {
 
 
     public void drawQuestionnaire(Canvas canvas){
-        canvas.drawText("No of questions", canvas.getWidth()/2-100, canvas.getHeight()/1.2f, dscrtextPaint);
-        canvas.drawText(""+noOfQuestions, canvas.getWidth()/2, canvas.getHeight()/1.1f, varTextPaint);
+        canvas.drawText("No of questions", canvas.getWidth() / 2 - 100, canvas.getHeight() / 1.2f, dscrtextPaint);
+        canvas.drawText("" + noOfQuestions, canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
         addQuestion.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 1.1f);
         removeQuestion.setPosition(canvas.getWidth() / 2 - 200, canvas.getHeight() / 1.1f);
         addQuestion.draw(canvas);

@@ -55,14 +55,9 @@ public class GameModeState extends BackgroundState {
         scoreRaceBtn.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 1.2f);
         scoreRaceBtn.draw(canvas);
         questionnaireBtn.draw(canvas);
-<<<<<<< HEAD
-        canvas.drawText("Questionnaire", questionnaireBtn.getX()-150, questionnaireBtn.getY(),buttonTextPaint);
-        canvas.drawText("Score Race", scoreRaceBtn.getX()-130, scoreRaceBtn.getY(), buttonTextPaint);
-=======
+
         canvas.drawText(gameModes.get(0), questionnaireBtn.getX()-150, questionnaireBtn.getY(),buttonTextPaint);
         canvas.drawText(gameModes.get(1), scoreRaceBtn.getX()-130, scoreRaceBtn.getY(), buttonTextPaint);
-
->>>>>>> ab6685223d17f778b7702ed09d038f4c32c7c761
     }
 
     public void update(float dt){
