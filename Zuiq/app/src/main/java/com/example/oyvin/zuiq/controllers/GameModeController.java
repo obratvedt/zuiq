@@ -2,7 +2,7 @@ package com.example.oyvin.zuiq.controllers;
 
 import java.util.ArrayList;
 
-public class GameModeController extends Controller {
+public class GameModeController {
     private ArrayList<String> gameModes;
 
     private static GameModeController gameModeController = null;
