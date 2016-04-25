@@ -30,8 +30,8 @@ public class GameModeState extends BackgroundState {
         Image questionnaireImg = new Image(R.drawable.optionbtn);
         Image scoreRaceImg = new Image(R.drawable.optionbtn);
         logo = new Logo(logoImg);
-        questionnaireBtn = new OptionBtn(questionnaireImg, "qn");
-        scoreRaceBtn = new OptionBtn(scoreRaceImg, "sr");
+        questionnaireBtn = new OptionBtn(questionnaireImg, true);
+        scoreRaceBtn = new OptionBtn(scoreRaceImg, false);
         this.addTouchListener(questionnaireBtn);
         this.addTouchListener(scoreRaceBtn);
         buttonTextPaint = new Paint();
