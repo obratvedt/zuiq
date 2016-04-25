@@ -2,6 +2,8 @@ package com.example.oyvin.zuiq.states;
 
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.sprites.Logo;
@@ -13,6 +15,7 @@ public class GamemodeState extends BackgroundState {
     private static GamemodeState gamemodeState = null;
     Logo logo;
     OptionBtn questionnaireBtn, scoreRaceBtn;
+    Paint buttonTextPaint;
 
     private GamemodeState(){
         super();
@@ -24,6 +27,9 @@ public class GamemodeState extends BackgroundState {
         scoreRaceBtn = new OptionBtn(scoreRaceImg, "sr");
         this.addTouchListener(questionnaireBtn);
         this.addTouchListener(scoreRaceBtn);
+        buttonTextPaint = new Paint();
+        buttonTextPaint.setColor(Color.BLACK);
+        buttonTextPaint.setTextSize(50);
 
     }
 
@@ -42,6 +48,8 @@ public class GamemodeState extends BackgroundState {
         scoreRaceBtn.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 1.2f);
         scoreRaceBtn.draw(canvas);
         questionnaireBtn.draw(canvas);
+        canvas.drawText("Questionnaire", questionnaireBtn.getX()-150, questionnaireBtn.getY(),buttonTextPaint);
+        canvas.drawText("Score Race", scoreRaceBtn.getX()-130, scoreRaceBtn.getY(), buttonTextPaint);
 
     }
     public void update(float dt){
