@@ -8,6 +8,7 @@ import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
 import com.example.oyvin.zuiq.sprites.StartBtn;
 
+import sheep.game.State;
 import sheep.graphics.Image;
 
 /**
@@ -23,6 +24,7 @@ public class ConfigState extends BackgroundState {
     Paint dscrtextPaint, varTextPaint, navPaint;
     PosNegBtn addPlayer, removePlayer, addSecond, removeSecond, addQuestion, removeQuestion, addScore, removeScore;
     StartBtn startGame;
+
     private ConfigState(){
         super();
         addPlayer = new PosNegBtn(new Image(R.drawable.optionbtn), "addPlayer");
@@ -151,10 +153,10 @@ public class ConfigState extends BackgroundState {
         }
     }
     public void setNoOfSeconds(int second){
-        if(noOfSeconds >= 5 && noOfSeconds < 30 && second > 0){
+        if(noOfSeconds >= 0 && noOfSeconds < 30 && second > 0){
             noOfSeconds += second;
         }
-        else if(noOfSeconds > 5 && noOfSeconds <= 30 && second <0){
+        else if(noOfSeconds > 0 && noOfSeconds <= 30 && second <0){
             noOfSeconds += second;
         }
     }
@@ -182,8 +184,18 @@ public class ConfigState extends BackgroundState {
         canvas.drawText("" + noOfPlayers, canvas.getWidth() / 2, canvas.getHeight() / 2, varTextPaint);
         canvas.drawText("Select seconds for each question", canvas.getWidth()/2-300, canvas.getHeight()/1.5f, dscrtextPaint);
         canvas.drawText(""+noOfSeconds, canvas.getWidth()/2, canvas.getHeight()/1.5f+110, varTextPaint);
+    }
 
-
+    public void switchState(State state){
+        super.switchState(state);
+        removeTouchListener(addPlayer);
+        removeTouchListener(removePlayer);
+        removeTouchListener(addSecond);
+        removeTouchListener(removeSecond);
+        removeTouchListener(addQuestion);
+        removeTouchListener(removeQuestion);
+        removeTouchListener(addScore);
+        removeTouchListener(removeScore);
     }
 }
 
