@@ -1,4 +1,3 @@
-.gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -10,8 +9,5 @@ gradle.properties
 local.properties
 settings.gradle
 Zuiq.iml
-/.Zuiq/build.gradle
-/.Zuiq/gradle.properties
-/.Zuiq/local.properties
-/.Zuiq/settings.gradle
-/.Zuiq/Zuiq.iml
+gradlew
+gradlew.bat
