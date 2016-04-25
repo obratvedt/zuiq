@@ -69,4 +69,5 @@ public class Game {
     public void setMaxQuestions(int maxQuestions) {
         this.maxQuestions = maxQuestions;
     }
+
 }

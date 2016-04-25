@@ -3,6 +3,7 @@ package com.example.oyvin.zuiq.sprites;
 
 import android.view.MotionEvent;
 
+import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.states.ConfigState;
 
 import sheep.game.Sprite;
@@ -11,7 +12,7 @@ import sheep.input.TouchListener;
 
 public class PosNegBtn extends Sprite implements TouchListener {
     float imageHeight, imageWidth;
-    String type;
+    public String type;
     public PosNegBtn(Image image, String type){
         super(image);
         this.type=type;
@@ -31,30 +32,29 @@ public class PosNegBtn extends Sprite implements TouchListener {
     public boolean onTouchDown(MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                if (type == "addPlayer"){
-                    ConfigState.getInstance().setNoOfPlayers(1);
+                if (type.equals("addPlayer")){
+                    ConfigController.getInstance().addNumberOfPlayers(1);
                 }
-                else if (type == "removePlayer"){
-                    ConfigState.getInstance().setNoOfPlayers(-1);
+                else if (type.equals("removePlayer")){
+                    ConfigController.getInstance().addNumberOfPlayers(-1);
                 }
                 else if (type == "addSecond"){
-                    ConfigState.getInstance().setNoOfSeconds(1);
+                    ConfigController.getInstance().addNumberOfSeconds(1);
                 }
                 else if(type == "removeSecond"){
-                    ConfigState.getInstance().setNoOfSeconds(-1);
+                    ConfigController.getInstance().addNumberOfSeconds(-1);
                 }
-
                 else if(type == "addQuestion"){
-                    ConfigState.getInstance().setNoOfQuestions(1);
+                    ConfigController.getInstance().addNumberOfQuestions(1);
                 }
                 else if (type == "removeQuestion"){
-                    ConfigState.getInstance().setNoOfQuestions(-1);
+                    ConfigController.getInstance().addNumberOfQuestions(-1);
                 }
                 else if (type == "addScore"){
-                    ConfigState.getInstance().setScoreLimit(1);
+                    ConfigController.getInstance().addScoreLimit(1);
                 }
                 else if (type == "removeScore"){
-                    ConfigState.getInstance().setScoreLimit(-1);
+                    ConfigController.getInstance().addScoreLimit(-1);
 
                 }
                 return true;
