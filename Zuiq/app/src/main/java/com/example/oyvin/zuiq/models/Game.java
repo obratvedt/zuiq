@@ -49,7 +49,8 @@ public class Game {
     }
 
     public void setTimeLimit(int timeLimit) {
-        this.timeLimit = timeLimit;
+        if (timeLimit > 0 && timeLimit <= 30)
+            this.timeLimit = timeLimit;
     }
 
     public int getMaxPoints() {

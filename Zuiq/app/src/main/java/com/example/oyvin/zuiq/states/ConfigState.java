@@ -155,32 +155,6 @@ public class ConfigState extends BackgroundState {
             noOfPlayers += player;
         }
     }
-    public void setNoOfSeconds(int second){
-        if(noOfSeconds >= 0 && noOfSeconds < 30 && second > 0){
-            noOfSeconds += second;
-        }
-        else if(noOfSeconds > 0 && noOfSeconds <= 30 && second <0){
-            noOfSeconds += second;
-        }
-    }
-
-    public void setNoOfQuestions(int question){
-        if(noOfQuestions >= 3 && noOfQuestions <30 && question >0){
-            noOfQuestions += question;
-        }
-        else if(noOfQuestions > 3 && noOfQuestions <=30 && question <0){
-            noOfQuestions += question;
-        }
-    }
-
-    public void setScoreLimit(int score){
-        if(scoreLimit >= 10 && scoreLimit < 100 && score >0){
-            scoreLimit += score;
-        }
-        else if(scoreLimit > 10 && scoreLimit <=100 && score <0){
-            scoreLimit += score;
-        }
-    }
 
     public void drawText(Canvas canvas){
         canvas.drawText("Select no. of players", canvas.getWidth() / 2 - 200, canvas.getHeight() / 2 - 110, dscrtextPaint);
