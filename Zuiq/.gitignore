@@ -1,7 +1,13 @@
-.gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
 /captures
+build.gradle
+gradle.properties
+local.properties
+settings.gradle
+Zuiq.iml
+gradlew
+gradlew.bat
