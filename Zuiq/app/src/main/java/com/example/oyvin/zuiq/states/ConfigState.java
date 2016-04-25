@@ -9,8 +9,6 @@ import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
 import com.example.oyvin.zuiq.sprites.StartBtn;
 
-import java.util.Objects;
-
 import sheep.game.State;
 import sheep.graphics.Image;
 
