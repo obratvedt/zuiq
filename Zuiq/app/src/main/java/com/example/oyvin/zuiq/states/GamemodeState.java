@@ -50,8 +50,8 @@ public class GameModeState extends BackgroundState {
         questionnaireBtn.draw(canvas);
         canvas.drawText("Questionnaire", questionnaireBtn.getX()-150, questionnaireBtn.getY(),buttonTextPaint);
         canvas.drawText("Score Race", scoreRaceBtn.getX()-130, scoreRaceBtn.getY(), buttonTextPaint);
-
     }
+
     public void update(float dt){
         logo.update(dt);
         questionnaireBtn.update(dt);

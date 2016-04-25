@@ -2,6 +2,8 @@ package com.example.oyvin.zuiq.sprites;
 
 import android.view.MotionEvent;
 
+import com.example.oyvin.zuiq.states.GameState;
+
 import sheep.game.Sprite;
 import sheep.graphics.Image;
 import sheep.input.TouchListener;
@@ -32,7 +34,7 @@ public class AnswerBtn extends Sprite implements TouchListener {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 
             if(touchOnSprite(motionEvent.getX(),motionEvent.getY())){
-                System.out.println("I am touched");
+                GameState.getInstance().controller.isCorrect(correct);
                 return true;
             }
         }
