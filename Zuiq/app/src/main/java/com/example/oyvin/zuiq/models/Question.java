@@ -1,6 +1,7 @@
 package com.example.oyvin.zuiq.models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Question {
@@ -23,7 +24,8 @@ public class Question {
 
     private void randomizeAnswers(ArrayList<Answer> answrs, Random rand) {
         answers = new ArrayList<>();
-        for(int i = 0; i < answers.size(); i++) {
+        int length = answrs.size();
+        for(int i = 0; i < length; i++) {
             answers.add(answrs.remove(rand.nextInt(answrs.size())));
         }
     }
