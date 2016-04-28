@@ -10,6 +10,8 @@ import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.helpers.Highscore;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 
+import java.util.Random;
+
 import sheep.graphics.Image;
 
 public class GameState extends BackgroundState {
@@ -18,7 +20,7 @@ public class GameState extends BackgroundState {
     public AnswerBtn ans1, ans2, ans3, ans4;
     public GameController controller;
     public String state;
-    Paint playerPaint;
+    Paint playerPaint, answerPaint, scorePaint;
 
 
     public static GameState getInstance() {
@@ -30,7 +32,7 @@ public class GameState extends BackgroundState {
 
     private GameState() {
         super();
-        ans1 = new AnswerBtn(new Image(R.drawable.optionbtn), "correct");
+        ans1 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans2 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans3 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans4 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
@@ -39,6 +41,11 @@ public class GameState extends BackgroundState {
         playerPaint.setColor(Color.WHITE);
         playerPaint.setTextSize(50);
 
+        answerPaint = new Paint();
+        answerPaint.setColor(Color.BLACK);
+        answerPaint.setTextSize(75);
+
+        ZiuqGame.selectQuestions(new Random());
         controller = new GameController(this);
     }
 
@@ -106,6 +113,11 @@ public class GameState extends BackgroundState {
         ans2.draw(thisCanvas);
         ans3.draw(thisCanvas);
         ans4.draw(thisCanvas);
+
+        thisCanvas.drawText(ans1.text, ans1.getX(), ans1.getY(), answerPaint);
+        thisCanvas.drawText(ans2.text, ans2.getX(), ans2.getY(), answerPaint);
+        thisCanvas.drawText(ans3.text, ans3.getX(), ans3.getY(), answerPaint);
+        thisCanvas.drawText(ans4.text, ans4.getX(), ans4.getY(), answerPaint);
 
     }
 

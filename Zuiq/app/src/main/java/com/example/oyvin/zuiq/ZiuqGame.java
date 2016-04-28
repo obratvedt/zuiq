@@ -17,7 +17,7 @@ public final class ZiuqGame {
     private static int timeLimit;
     private static int maxPoints;
     private static int maxQuestions;
-    private static int currentQuestionId;
+    private static int currentQuestionId = 0;
 
     private ZiuqGame(){
     }

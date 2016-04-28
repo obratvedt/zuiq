@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.models.Player;
+import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 import com.example.oyvin.zuiq.states.GameState;
 
@@ -12,6 +13,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,8 +23,7 @@ public class GameController {
 
     GameState game;
     Canvas canvas;
-
-
+    ArrayList<AnswerBtn> ansButtons = new ArrayList<>();
 
     private Timer timer;
     private int delay = 0;
@@ -99,7 +100,10 @@ public class GameController {
             Player player = new Player("Player" + (i + 1));
             players.add(player);
         }
-
+        ansButtons.add(game.ans1);
+        ansButtons.add(game.ans2);
+        ansButtons.add(game.ans3);
+        ansButtons.add(game.ans4);
         ZiuqGame.setPlayers(players);
 
 
@@ -109,8 +113,15 @@ public class GameController {
 
     }
 
+    Question thisQuestion = ZiuqGame.nextQuestion();
     public void play() {
-        System.out.println();
+
+        /*
+        System.out.println("QUESTION IS : " + thisQuestion.toString());
+        System.out.println("ANSWERS ARE : " + thisQuestion.getAnswers().toString());
+        System.out.println("CORRECT ANSWER IS : " + thisQuestion.getRightAnswer().toString());
+        */
+
         if (ZiuqGame.isQuestionnaire()) {
             if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion >= ZiuqGame.getMaxQuestions()) {
                 game.state = "hs";
@@ -118,10 +129,10 @@ public class GameController {
             else if (currentPlayer >= ZiuqGame.getPlayers().size()) {
                 currentPlayer = 0;
                 currentQuestion += 1;
+                thisQuestion = ZiuqGame.nextQuestion();
                 game.state = "s";
                 secondsLeft = 15;
                 startCountdown();
-                System.out.println("QUESTION NO: " + currentQuestion);
             }
             else {
                 if (game.state.equals("p")) {
@@ -131,7 +142,15 @@ public class GameController {
 
                 else if (game.state.equals("q")) {
                     if (ZiuqGame.getTimeLimit() == 0) {
-
+                        for (int i = 0; i < thisQuestion.getAnswers().size(); i++) {
+                            ansButtons.get(i).text = thisQuestion.getAnswers().get(i).toString();
+                            if (thisQuestion.getAnswers().get(i).equals(thisQuestion.getRightAnswer())) {
+                                ansButtons.get(i).correct = "correct";
+                            }
+                            else {
+                                ansButtons.get(i).correct = "incorrect";
+                            }
+                        }
                     }
                     else {
                         secondsLeft = ZiuqGame.getTimeLimit();
