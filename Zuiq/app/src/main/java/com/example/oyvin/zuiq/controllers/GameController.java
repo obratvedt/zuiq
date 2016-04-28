@@ -25,13 +25,13 @@ public class GameController {
     GameState game;
     Canvas canvas;
     ArrayList<AnswerBtn> ansButtons = new ArrayList<>();
-    Question thisQuestion;
+    public Question thisQuestion;
 
     private Timer timer;
     private int delay = 0;
     private int totalTicks = 6 * 10;
     private int ticksLeft = totalTicks;
-    private int secondsLeft = 6;
+    public int secondsLeft = 6;
 
     private Map<Integer, Player> players = new HashMap<>();
 
@@ -51,8 +51,10 @@ public class GameController {
         ticksLeft--;
         if (ticksLeft % 10 == 0) {
             secondsLeft--;
-            if (secondsLeft > 0)
+            if (secondsLeft > 0){
                 System.out.println(secondsLeft);
+            }
+
             else
                 timesUp();
         }
@@ -118,10 +120,10 @@ public class GameController {
 
 
     public void play() {
-        System.out.println("QUESTION IS : " + thisQuestion.getText());
-        System.out.println("ANSWERS ARE : " + thisQuestion.getAnswers().toString());
-        System.out.println("CORRECT ANSWER IS : " + thisQuestion.getRightAnswer().toString());
 
+        System.out.println("QUESTION " + thisQuestion.getText());
+        System.out.println("ANSWERS " + thisQuestion.getAnswers().toString());
+        System.out.println("RIGHT " + thisQuestion.getRightAnswer().toString());
 
         if (ZiuqGame.isQuestionnaire()) {
             if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion >= ZiuqGame.getMaxQuestions()) {

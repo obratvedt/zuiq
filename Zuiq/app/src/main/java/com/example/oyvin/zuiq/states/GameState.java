@@ -9,8 +9,10 @@ import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.helpers.Highscore;
+import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,8 +24,10 @@ public class GameState extends BackgroundState {
     public AnswerBtn ans1, ans2, ans3, ans4;
     public GameController controller;
     public String state;
-    Paint playerPaint, scorePaint;
+    Paint playerPaint;
     Paint ans1Paint, ans2Paint, ans3Paint, ans4Paint;
+    Paint QuestionPaint;
+    Paint TimerPaint;
     public ArrayList<AnswerBtn> ansbtns = new ArrayList<>();
     public ArrayList<Paint> anspaints = new ArrayList<>();
 
@@ -57,11 +61,16 @@ public class GameState extends BackgroundState {
         ans2Paint = new Paint();
         ans3Paint = new Paint();
         ans4Paint = new Paint();
+        QuestionPaint = new Paint();
+        TimerPaint = new Paint();
 
         ans1Paint.setColor(Color.BLACK);
         ans2Paint.setColor(Color.BLACK);
         ans3Paint.setColor(Color.BLACK);
         ans4Paint.setColor(Color.BLACK);
+        QuestionPaint.setColor(Color.WHITE);
+        TimerPaint.setColor(Color.WHITE);
+        TimerPaint.setTextSize(75);
 
         anspaints.add(ans1Paint);
         anspaints.add(ans2Paint);
@@ -137,9 +146,17 @@ public class GameState extends BackgroundState {
         ans4.draw(thisCanvas);
 
         for (int i = 0; i < anspaints.size(); i++) {
-            anspaints.get(i).setTextSize(75 -  (1.3f*ansbtns.get(i).text.length()));
+            anspaints.get(i).setTextSize(75 -  (1.4f*ansbtns.get(i).text.length()));
             thisCanvas.drawText(ansbtns.get(i).text, ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/3, ansbtns.get(i).getY(), anspaints.get(i));
         }
+
+        QuestionPaint.setTextSize(100 - 0.9f * controller.thisQuestion.getText().length());
+
+        thisCanvas.drawText(controller.thisQuestion.getText(), thisCanvas.getWidth()/10, thisCanvas.getHeight()/5, QuestionPaint);
+
+        //if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-100, thisCanvas.getHeight()/10, TimerPaint);
+
+
     }
 
     public void drawScore () {
