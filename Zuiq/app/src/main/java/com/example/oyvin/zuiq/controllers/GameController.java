@@ -3,7 +3,7 @@ package com.example.oyvin.zuiq.controllers;
 import android.graphics.Canvas;
 
 import com.example.oyvin.zuiq.R;
-import com.example.oyvin.zuiq.Game;
+import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.models.Player;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 import com.example.oyvin.zuiq.states.GameState;
@@ -83,11 +83,6 @@ public class GameController {
 
     }
 
-    public void changeState() {
-
-    }
-
-
     public boolean inst = false;
 
     public int currentPlayer = 0;
@@ -106,27 +101,27 @@ public class GameController {
         players.add(new Player("P2"));
         players.add(new Player("P3"));
 
-        Game.setPlayers(players);
+        ZiuqGame.setPlayers(players);
 
-        System.out.println("Players " + Game.getPlayers().toString());
-        System.out.println("Size " + Game.getPlayers().size());
+        System.out.println("Players " + ZiuqGame.getPlayers().toString());
+        System.out.println("Size " + ZiuqGame.getPlayers().size());
         game.state = "q";
-        Game.setTimeLimit(7);
+        ZiuqGame.setTimeLimit(7);
         play(currentPlayer, currentQuestion);
 
     }
 
     public void play(int p, int q) {
 
-        if (currentPlayer >= Game.getPlayers().size()) {
+        if (currentPlayer >= ZiuqGame.getPlayers().size()) {
             currentPlayer = 0;
             currentQuestion += 1;
             game.state = "s";
             secondsLeft = 15;
             startCountdown();
-            System.out.println("P1 score: " + Game.getPlayers().get(0).getScore());
-            System.out.println("P2 score: " + Game.getPlayers().get(1).getScore());
-            System.out.println("P3 score: " + Game.getPlayers().get(2).getScore());
+            System.out.println("P1 score: " + ZiuqGame.getPlayers().get(0).getScore());
+            System.out.println("P2 score: " + ZiuqGame.getPlayers().get(1).getScore());
+            System.out.println("P3 score: " + ZiuqGame.getPlayers().get(2).getScore());
         }
         else {
             System.out.println("PLAYER " + currentPlayer);
@@ -136,11 +131,11 @@ public class GameController {
                 }
 
             else if (game.state.equals("q")) {
-                if (Game.getTimeLimit() == 0) {
+                if (ZiuqGame.getTimeLimit() == 0) {
 
                 }
                 else {
-                    secondsLeft = Game.getTimeLimit();
+                    secondsLeft = ZiuqGame.getTimeLimit();
                     startCountdown();
                 }
 
@@ -156,7 +151,7 @@ public class GameController {
     public void isCorrect(String str) {
         if (str.equals("correct")) {
             System.out.println("Correct answer");
-            Game.getPlayers().get(currentPlayer).setScore(Game.getPlayers().get(currentPlayer).getScore() + 1);
+            ZiuqGame.getPlayers().get(currentPlayer).setScore(ZiuqGame.getPlayers().get(currentPlayer).getScore() + 1);
             currentPlayer += 1;
             game.state = "p";
             timer.cancel();

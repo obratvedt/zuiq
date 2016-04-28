@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.example.oyvin.zuiq.Game;
+import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
@@ -19,11 +19,6 @@ import sheep.graphics.Image;
 public class ConfigState extends BackgroundState {
     private static ConfigState configState = null;
     private ConfigController controller;
-    String gameMode;
-    int noOfPlayers = 1;
-    int noOfSeconds = 5;
-    int noOfQuestions = 3;
-    int scoreLimit = 10;
     Paint dscrtextPaint, varTextPaint, navPaint;
     PosNegBtn addPlayer, removePlayer, addSecond, removeSecond, addQuestion, removeQuestion, addScore, removeScore;
     StartBtn startGame;
@@ -68,17 +63,14 @@ public class ConfigState extends BackgroundState {
         return configState;
     }
 
-    public void setGameMode(String gameMode) {
-        this.gameMode = gameMode;
-    }
-
     public void draw(Canvas canvas){
         super.draw(canvas);
         drawText(canvas);
 
         setPositionOfSprites(canvas);
 
-        if(Game.isQuestionnaire()){
+
+        if(ZiuqGame.isQuestionnaire()){
             drawQuestionnaire(canvas);
         }
         else {
@@ -90,7 +82,7 @@ public class ConfigState extends BackgroundState {
 
     public void drawQuestionnaire(Canvas canvas){
         canvas.drawText("No of questions", canvas.getWidth() / 2 - 100, canvas.getHeight() / 1.2f, dscrtextPaint);
-        canvas.drawText("" + noOfQuestions, canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
+        canvas.drawText("" + ZiuqGame.getMaxQuestions(), canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
         addQuestion.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 1.1f);
         removeQuestion.setPosition(canvas.getWidth() / 2 - 200, canvas.getHeight() / 1.1f);
         addQuestion.draw(canvas);
@@ -101,8 +93,8 @@ public class ConfigState extends BackgroundState {
 
     }
     public void drawScoreRace(Canvas canvas){
-        canvas.drawText("Score limit", canvas.getWidth()/2-100, canvas.getHeight()/1.2f, dscrtextPaint);
-        canvas.drawText(""+scoreLimit, canvas.getWidth()/2, canvas.getHeight()/1.1f, varTextPaint);
+        canvas.drawText("Score limit", canvas.getWidth() / 2 - 100, canvas.getHeight() / 1.2f, dscrtextPaint);
+        canvas.drawText("" + ZiuqGame.getMaxPoints(), canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
         addScore.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 1.1f);
         removeScore.setPosition(canvas.getWidth() / 2 - 200, canvas.getHeight() / 1.1f);
         addScore.draw(canvas);
@@ -125,10 +117,10 @@ public class ConfigState extends BackgroundState {
 
 
         canvas.drawText(">", addSecond.getX() - 20, addSecond.getY() + 25, navPaint);
-        canvas.drawText(">", addPlayer.getX()-20, addPlayer.getY()+25, navPaint);
+        canvas.drawText(">", addPlayer.getX() - 20, addPlayer.getY() + 25, navPaint);
 
-        canvas.drawText("<", removePlayer.getX()-20, addSecond.getY()+25, navPaint);
-        canvas.drawText("<", removeSecond.getX()-20, addPlayer.getY()+25, navPaint);
+        canvas.drawText("<", removePlayer.getX() - 20, addSecond.getY() + 25, navPaint);
+        canvas.drawText("<", removeSecond.getX() - 20, addPlayer.getY() + 25, navPaint);
 
 
     }
@@ -146,20 +138,11 @@ public class ConfigState extends BackgroundState {
         startGame.update(dt);
     }
 
-    public void setNoOfPlayers(int player){
-        if (noOfPlayers > 0 && noOfPlayers < 5 && player >0){
-            noOfPlayers += player;
-        }
-        else if(noOfPlayers >1 && noOfPlayers <= 5 && player < 0){
-            noOfPlayers += player;
-        }
-    }
-
     public void drawText(Canvas canvas){
         canvas.drawText("Select no. of players", canvas.getWidth() / 2 - 200, canvas.getHeight() / 2 - 110, dscrtextPaint);
-        canvas.drawText("" + noOfPlayers, canvas.getWidth() / 2, canvas.getHeight() / 2, varTextPaint);
+        canvas.drawText("" + ZiuqGame.getMaxPlayers(), canvas.getWidth() / 2, canvas.getHeight() / 2, varTextPaint);
         canvas.drawText("Select seconds for each question", canvas.getWidth()/2-300, canvas.getHeight()/1.5f, dscrtextPaint);
-        canvas.drawText(""+noOfSeconds, canvas.getWidth()/2, canvas.getHeight()/1.5f+110, varTextPaint);
+        canvas.drawText("" + ZiuqGame.getTimeLimit(), canvas.getWidth()/2, canvas.getHeight()/1.5f+110, varTextPaint);
     }
 
     public void switchState(State state){
