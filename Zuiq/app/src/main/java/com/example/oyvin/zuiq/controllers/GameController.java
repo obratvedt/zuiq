@@ -95,18 +95,16 @@ public class GameController {
 
     public void init() {
         canvas = game.thisCanvas;
-
         ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player("P1"));
-        players.add(new Player("P2"));
-        players.add(new Player("P3"));
+        for (int i = 0; i < ZiuqGame.getMaxPlayers(); i++) {
+            Player player = new Player("Player" + (i + 1));
+            players.add(player);
+        }
 
         ZiuqGame.setPlayers(players);
 
         System.out.println("Players " + ZiuqGame.getPlayers().toString());
-        System.out.println("Size " + ZiuqGame.getPlayers().size());
         game.state = "q";
-        ZiuqGame.setTimeLimit(7);
         play(currentPlayer, currentQuestion);
 
     }
@@ -119,9 +117,6 @@ public class GameController {
             game.state = "s";
             secondsLeft = 15;
             startCountdown();
-            System.out.println("P1 score: " + ZiuqGame.getPlayers().get(0).getScore());
-            System.out.println("P2 score: " + ZiuqGame.getPlayers().get(1).getScore());
-            System.out.println("P3 score: " + ZiuqGame.getPlayers().get(2).getScore());
         }
         else {
             System.out.println("PLAYER " + currentPlayer);
@@ -142,10 +137,7 @@ public class GameController {
             }
         }
     }
-
-
-
-
+    
 
 
     public void isCorrect(String str) {
