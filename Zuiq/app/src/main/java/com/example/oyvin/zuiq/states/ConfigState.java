@@ -52,10 +52,8 @@ public class ConfigState extends BackgroundState {
         navPaint = new Paint();
         navPaint.setColor(Color.BLACK);
         navPaint.setTextSize(100);
-
-
-
     }
+
     public static ConfigState getInstance(){
         if (configState == null){
             configState = new ConfigState();
@@ -88,9 +86,8 @@ public class ConfigState extends BackgroundState {
         removeQuestion.draw(canvas);
         canvas.drawText(">", addQuestion.getX() - 20, addQuestion.getY() + 25, navPaint);
         canvas.drawText("<", removeQuestion.getX() - 20, addQuestion.getY() + 25, navPaint);
-
-
     }
+
     public void drawScoreRace(Canvas canvas){
         canvas.drawText("Score limit", canvas.getWidth() / 2 - 100, canvas.getHeight() / 1.2f, dscrtextPaint);
         canvas.drawText("" + ZiuqGame.getMaxPoints(), canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
@@ -101,6 +98,7 @@ public class ConfigState extends BackgroundState {
         canvas.drawText(">", addScore.getX() - 20, addScore.getY() + 25, navPaint);
         canvas.drawText("<", removeScore.getX() - 20, removeScore.getY() + 25, navPaint);
     }
+
     public void setPositionOfSprites(Canvas canvas){
         addPlayer.setPosition(canvas.getWidth()/2 +200, canvas.getHeight()/2);
         removePlayer.setPosition(canvas.getWidth()/2-200, canvas.getHeight()/2);
