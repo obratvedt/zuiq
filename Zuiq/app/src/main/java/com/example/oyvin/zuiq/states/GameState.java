@@ -1,6 +1,8 @@
 package com.example.oyvin.zuiq.states;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.controllers.GameController;
@@ -13,7 +15,9 @@ public class GameState extends BackgroundState {
     public Canvas thisCanvas;
     public AnswerBtn ans1, ans2, ans3, ans4;
     public GameController controller;
-    public String state = "q";
+    public String state;
+    Paint playerPaint;
+
 
     public static GameState getInstance() {
         if(gameState == null){
@@ -28,6 +32,10 @@ public class GameState extends BackgroundState {
         ans2 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans3 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans4 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
+
+        playerPaint = new Paint();
+        playerPaint.setColor(Color.WHITE);
+        playerPaint.setTextSize(50);
 
         this.addTouchListener(ans1);
         this.addTouchListener(ans2);
@@ -63,7 +71,7 @@ public class GameState extends BackgroundState {
                 drawQuestion();
             }
             else if (state.equals("p")) {
-
+                drawPause();
             }
 
             else if (state.equals("s")) {
@@ -73,6 +81,11 @@ public class GameState extends BackgroundState {
 
             }
         }
+    }
+
+    public void drawPause() {
+        thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth()/2-100, thisCanvas.getHeight()/1.2f, playerPaint);
+
     }
 
     public void drawQuestion () {

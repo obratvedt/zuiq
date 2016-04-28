@@ -24,15 +24,15 @@ public class GameController {
 
 
 
-    private static Timer timer;
-    private static int delay = 0;
-    private static int totalTicks = 6 * 10;
-    private static int ticksLeft = totalTicks;
-    private static int secondsLeft = 6;
+    private Timer timer;
+    private int delay = 0;
+    private int totalTicks = 6 * 10;
+    private int ticksLeft = totalTicks;
+    private int secondsLeft = 6;
 
     private Map<Integer, Player> players = new HashMap<>();
 
-    private static void startCountdown () {
+    private void startCountdown () {
         int period = 100;
         timer = new Timer();
 
@@ -44,7 +44,7 @@ public class GameController {
         }, delay, period);
     }
 
-    private static void count() {
+    private void count() {
         ticksLeft--;
         if (ticksLeft % 10 == 0) {
             secondsLeft--;
@@ -55,13 +55,26 @@ public class GameController {
         }
     }
 
-    private static void timesUp() {
+    private void timesUp() {
         timer.cancel();
+        if (game.state.equals("q")) {
+            game.state = "p";
+            currentPlayer += 1;
+            play(currentPlayer, currentQuestion);
+        }
+        else if (game.state.equals("p")) {
+            game.state = "q";
+            play(currentPlayer, currentQuestion);
+        }
+        else if (game.state.equals("s")) {
+            game.state = "q";
+            play(currentPlayer, currentQuestion);
+        }
         System.out.println("Time's up!");
 
     }
 
-    public static void main (String[] args) {
+    public void main (String[] args) {
         startCountdown();
     }
 
@@ -77,8 +90,8 @@ public class GameController {
 
     public boolean inst = false;
 
-    private int currentPlayer = 0;
-    private int currentQuestion = 0;
+    public int currentPlayer = 0;
+    public int currentQuestion = 0;
 
     public GameController(GameState game) {
         this.game = game;
@@ -97,37 +110,63 @@ public class GameController {
 
         System.out.println("Players " + Game.getPlayers().toString());
         System.out.println("Size " + Game.getPlayers().size());
+        game.state = "q";
+        Game.setTimeLimit(7);
         play(currentPlayer, currentQuestion);
+
     }
 
     public void play(int p, int q) {
-
-
-        startCountdown();
-
 
         if (currentPlayer >= Game.getPlayers().size()) {
             currentPlayer = 0;
             currentQuestion += 1;
             game.state = "s";
+            secondsLeft = 15;
+            startCountdown();
             System.out.println("P1 score: " + Game.getPlayers().get(0).getScore());
             System.out.println("P2 score: " + Game.getPlayers().get(1).getScore());
             System.out.println("P3 score: " + Game.getPlayers().get(2).getScore());
         }
-        System.out.println("PLAYER " + currentPlayer);
+        else {
+            System.out.println("PLAYER " + currentPlayer);
+            if (game.state.equals("p")) {
+                secondsLeft = 5;
+                startCountdown();
+                }
 
+            else if (game.state.equals("q")) {
+                if (Game.getTimeLimit() == 0) {
 
+                }
+                else {
+                    secondsLeft = Game.getTimeLimit();
+                    startCountdown();
+                }
+
+            }
+        }
     }
+
+
+
+
+
 
     public void isCorrect(String str) {
         if (str.equals("correct")) {
             System.out.println("Correct answer");
             Game.getPlayers().get(currentPlayer).setScore(Game.getPlayers().get(currentPlayer).getScore() + 1);
             currentPlayer += 1;
+            game.state = "p";
+            timer.cancel();
             play(currentPlayer, currentQuestion);
+
         } else if (str.equals("incorrect")) {
             System.out.println("Incorrect answer");
             currentPlayer += 1;
+            game.state = "p";
+            timer.cancel();
             play(currentPlayer, currentQuestion);
         }
     }
