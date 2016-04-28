@@ -2,6 +2,10 @@ package com.example.oyvin.zuiq.controllers;
 
 import com.example.oyvin.zuiq.ZiuqGame;
 
+import java.util.Random;
+
+import sheep.game.Game;
+
 public class ConfigController {
 
     private static ConfigController instance = null;
