@@ -124,7 +124,7 @@ public class GameController {
 
 
         if (ZiuqGame.isQuestionnaire()) {
-            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion > ZiuqGame.getMaxQuestions()) {
+            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion >= ZiuqGame.getMaxQuestions()) {
                 game.state = "hs";
             }
             else if (currentPlayer >= ZiuqGame.getPlayers().size()) {

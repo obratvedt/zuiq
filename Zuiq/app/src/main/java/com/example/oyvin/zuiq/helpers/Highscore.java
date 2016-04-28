@@ -28,16 +28,14 @@ public class Highscore {
 				return 0;
 			}
 		});
-		
 	}
 
 	public String getHighscore(){
 		String str = "";
 		
 		for (int r = 0; r < players.size(); r++) {
-			str += players.get(r).getName() + " " + players.get(r).getScore() + " \n";
+			str += players.get(r).getName() + ": " + players.get(r).getScore() + " \n";
 		}
 		return str;
-		
 	}
 }
