@@ -34,8 +34,7 @@ public class ConfigController {
     }
 
     public void addScoreLimit(int add) {
-        ZiuqGame.setMaxPoints(add);
-
+        ZiuqGame.addMaxPoints(add);
     }
 
 }

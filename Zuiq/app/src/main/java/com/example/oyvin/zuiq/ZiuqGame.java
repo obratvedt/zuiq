@@ -15,7 +15,7 @@ public final class ZiuqGame {
     private static ArrayList<Question> selectedQuestions;
     private static boolean questionnaire;
     private static int timeLimit;
-    private static int maxPoints;
+    private static int maxPoints = 10;
     private static int maxQuestions;
     private static int currentQuestionId = 0;
 
@@ -67,8 +67,12 @@ public final class ZiuqGame {
     }
 
     public static void setMaxPoints(int newMaxPoints) {
-        if (maxPoints >= 10 && maxPoints <= 100)
+        if (newMaxPoints >= 10 && newMaxPoints <= 100)
             maxPoints = newMaxPoints;
+    }
+
+    public static void addMaxPoints(int add) {
+        setMaxPoints(maxPoints + add);
     }
 
     public static int getMaxQuestions() {

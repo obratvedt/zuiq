@@ -38,24 +38,23 @@ public class PosNegBtn extends Sprite implements TouchListener {
                 else if (type.equals("removePlayer")){
                     ConfigController.getInstance().addNumberOfPlayers(-1);
                 }
-                else if (type == "addSecond"){
+                else if (type.equals("addSecond")){
                     ConfigController.getInstance().addNumberOfSeconds(1);
                 }
-                else if(type == "removeSecond"){
+                else if(type.equals("removeSecond")){
                     ConfigController.getInstance().addNumberOfSeconds(-1);
                 }
-                else if(type == "addQuestion"){
+                else if(type.equals("addQuestion")){
                     ConfigController.getInstance().addNumberOfQuestions(1);
                 }
-                else if (type == "removeQuestion"){
+                else if (type.equals("removeQuestion")){
                     ConfigController.getInstance().addNumberOfQuestions(-1);
                 }
-                else if (type == "addScore"){
+                else if (type.equals("addScore")){
                     ConfigController.getInstance().addScoreLimit(1);
                 }
-                else if (type == "removeScore"){
+                else if (type.equals("removeScore")){
                     ConfigController.getInstance().addScoreLimit(-1);
-
                 }
                 return true;
             }
