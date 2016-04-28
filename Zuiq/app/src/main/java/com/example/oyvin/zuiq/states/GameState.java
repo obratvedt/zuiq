@@ -37,11 +37,6 @@ public class GameState extends BackgroundState {
         playerPaint.setColor(Color.WHITE);
         playerPaint.setTextSize(50);
 
-        this.addTouchListener(ans1);
-        this.addTouchListener(ans2);
-        this.addTouchListener(ans3);
-        this.addTouchListener(ans4);
-
         controller = new GameController(this);
     }
 
@@ -68,17 +63,31 @@ public class GameState extends BackgroundState {
         else {
 
             if (state.equals("q")) {
+                this.addTouchListener(ans1);
+                this.addTouchListener(ans2);
+                this.addTouchListener(ans3);
+                this.addTouchListener(ans4);
                 drawQuestion();
             }
             else if (state.equals("p")) {
+                this.removeTouchListener(ans1);
+                this.removeTouchListener(ans2);
+                this.removeTouchListener(ans3);
+                this.removeTouchListener(ans4);
                 drawPause();
             }
 
             else if (state.equals("s")) {
-
+                this.removeTouchListener(ans1);
+                this.removeTouchListener(ans2);
+                this.removeTouchListener(ans3);
+                this.removeTouchListener(ans4);
             }
-            else {
-
+            else if (state.equals("hs")) {
+                this.removeTouchListener(ans1);
+                this.removeTouchListener(ans2);
+                this.removeTouchListener(ans3);
+                this.removeTouchListener(ans4);
             }
         }
     }

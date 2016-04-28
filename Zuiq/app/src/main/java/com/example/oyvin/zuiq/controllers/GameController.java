@@ -60,15 +60,15 @@ public class GameController {
         if (game.state.equals("q")) {
             game.state = "p";
             currentPlayer += 1;
-            play(currentPlayer, currentQuestion);
+            play();
         }
         else if (game.state.equals("p")) {
             game.state = "q";
-            play(currentPlayer, currentQuestion);
+            play();
         }
         else if (game.state.equals("s")) {
             game.state = "q";
-            play(currentPlayer, currentQuestion);
+            play();
         }
         System.out.println("Time's up!");
 
@@ -90,7 +90,6 @@ public class GameController {
 
     public GameController(GameState game) {
         this.game = game;
-        System.out.println("CONTROLLER MADE");
     }
 
     public void init() {
@@ -103,41 +102,59 @@ public class GameController {
 
         ZiuqGame.setPlayers(players);
 
+
         System.out.println("Players " + ZiuqGame.getPlayers().toString());
         game.state = "q";
-        play(currentPlayer, currentQuestion);
+        play();
 
     }
 
-    public void play(int p, int q) {
+    public void play() {
+        System.out.println();
+        if (ZiuqGame.isQuestionnaire()) {
+            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion < ZiuqGame.getMaxQuestions()) {
+                game.state = "hs";
+            }
+            else if (currentPlayer >= ZiuqGame.getPlayers().size()) {
+                //display highscore
 
-        if (currentPlayer >= ZiuqGame.getPlayers().size()) {
-            currentPlayer = 0;
-            currentQuestion += 1;
-            game.state = "s";
-            secondsLeft = 15;
-            startCountdown();
-        }
-        else {
-            System.out.println("PLAYER " + currentPlayer);
-            if (game.state.equals("p")) {
-                secondsLeft = 5;
+                currentPlayer = 0;
+                currentQuestion += 1;
+                game.state = "s";
+                secondsLeft = 15;
                 startCountdown();
-                }
-
-            else if (game.state.equals("q")) {
-                if (ZiuqGame.getTimeLimit() == 0) {
-
-                }
-                else {
-                    secondsLeft = ZiuqGame.getTimeLimit();
+                System.out.println("QUESTION NO: " + currentQuestion);
+            }
+            else {
+                if (game.state.equals("p")) {
+                    secondsLeft = 5;
                     startCountdown();
                 }
 
+                else if (game.state.equals("q")) {
+                    if (ZiuqGame.getTimeLimit() == 0) {
+
+                    }
+                    else {
+                        secondsLeft = ZiuqGame.getTimeLimit();
+                        startCountdown();
+                    }
+
+                }
+
+                else {
+                    game.state = "s";
+                }
             }
         }
+
+        else {
+
+        }
+
+
     }
-    
+
 
 
     public void isCorrect(String str) {
@@ -146,15 +163,15 @@ public class GameController {
             ZiuqGame.getPlayers().get(currentPlayer).setScore(ZiuqGame.getPlayers().get(currentPlayer).getScore() + 1);
             currentPlayer += 1;
             game.state = "p";
-            timer.cancel();
-            play(currentPlayer, currentQuestion);
+            if (ZiuqGame.getTimeLimit() != 0) timer.cancel();
+            play();
 
         } else if (str.equals("incorrect")) {
             System.out.println("Incorrect answer");
             currentPlayer += 1;
             game.state = "p";
-            timer.cancel();
-            play(currentPlayer, currentQuestion);
+            if (ZiuqGame.getTimeLimit() != 0) timer.cancel();
+            play();
         }
     }
 
