@@ -25,8 +25,8 @@ public class FileOperations {
                     String[] files = am.list(QUESTION_DIRECTORY + "/" + path);
                     if (files.length > 0) { // Another folder
                         for (String filePath : files) {
-                            File file = new File(QUESTION_DIRECTORY + "/" + path + "/" + filePath);
-                            result.add(createQuestionFromFile(file, path));
+                            InputStreamReader isr = new InputStreamReader(am.open(QUESTION_DIRECTORY + "/" + path + "/" + filePath));
+                            result.add(createQuestionFromFile(isr, path));
                         }
                     }
                 }
@@ -34,14 +34,12 @@ public class FileOperations {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        System.out.println(result);
         return result;
     }
 
-    private static Question createQuestionFromFile(File file, String category) {
+    private static Question createQuestionFromFile(InputStreamReader isr, String category) {
         try {
-            System.out.println(file.getAbsolutePath());
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            BufferedReader br = new BufferedReader(isr);
             String question_text = br.readLine();
             String line;
             ArrayList<Answer> answers = new ArrayList<>();
