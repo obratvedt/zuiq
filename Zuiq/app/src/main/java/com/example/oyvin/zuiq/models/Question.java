@@ -17,17 +17,15 @@ public class Question {
         this.id = ++NUMBER_OF_QUESTIONS;
         this.text = text;
         this.category = category;
-        this.answers = answers;
+        randomizeAnswers(answers, new Random());
         this.rightAnswer = rightAnswer;
     }
 
-    public ArrayList<Answer> getRandomizedAnswers(Random rand) {
-        ArrayList<Answer> result = new ArrayList<>();
-        ArrayList<Answer> tmp = new ArrayList<>(answers);
+    private void randomizeAnswers(ArrayList<Answer> answrs, Random rand) {
+        answers = new ArrayList<>();
         for(int i = 0; i < answers.size(); i++) {
-            result.add(tmp.remove(rand.nextInt(answers.size())));
+            answers.add(answrs.remove(rand.nextInt(answrs.size())));
         }
-        return result;
     }
 
     public int getId() {
