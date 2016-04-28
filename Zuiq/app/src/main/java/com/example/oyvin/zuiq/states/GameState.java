@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.example.oyvin.zuiq.R;
+import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.controllers.GameController;
+import com.example.oyvin.zuiq.helpers.Highscore;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 
 import sheep.graphics.Image;
@@ -82,28 +84,34 @@ public class GameState extends BackgroundState {
                 this.removeTouchListener(ans2);
                 this.removeTouchListener(ans3);
                 this.removeTouchListener(ans4);
+                drawScore();
             }
             else if (state.equals("hs")) {
                 this.removeTouchListener(ans1);
                 this.removeTouchListener(ans2);
                 this.removeTouchListener(ans3);
                 this.removeTouchListener(ans4);
+                drawScore();
             }
         }
     }
 
     public void drawPause() {
-        thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth()/2-100, thisCanvas.getHeight()/1.2f, playerPaint);
+        thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 2 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
 
     }
 
     public void drawQuestion () {
-
         ans1.draw(thisCanvas);
         ans2.draw(thisCanvas);
         ans3.draw(thisCanvas);
         ans4.draw(thisCanvas);
 
+    }
+
+    public void drawScore () {
+        Highscore hi = new Highscore(ZiuqGame.getPlayers());
+        thisCanvas.drawText(hi.getHighscore(), thisCanvas.getWidth()/2, thisCanvas.getHeight()/2, playerPaint);
     }
 
     public void update(float dt) {

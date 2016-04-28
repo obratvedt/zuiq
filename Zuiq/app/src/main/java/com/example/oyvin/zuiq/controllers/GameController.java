@@ -112,12 +112,10 @@ public class GameController {
     public void play() {
         System.out.println();
         if (ZiuqGame.isQuestionnaire()) {
-            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion < ZiuqGame.getMaxQuestions()) {
+            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion >= ZiuqGame.getMaxQuestions()) {
                 game.state = "hs";
             }
             else if (currentPlayer >= ZiuqGame.getPlayers().size()) {
-                //display highscore
-
                 currentPlayer = 0;
                 currentQuestion += 1;
                 game.state = "s";
@@ -143,7 +141,6 @@ public class GameController {
                 }
 
                 else {
-                    game.state = "s";
                 }
             }
         }
