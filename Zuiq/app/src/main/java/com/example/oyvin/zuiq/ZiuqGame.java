@@ -1,21 +1,24 @@
 package com.example.oyvin.zuiq;
 
+import com.example.oyvin.zuiq.helpers.FileOperations;
 import com.example.oyvin.zuiq.models.Player;
 import com.example.oyvin.zuiq.models.Question;
 
 import java.util.ArrayList;
 
-public final class Game {
+public final class ZiuqGame {
 
     private static ArrayList<Player> players;
     private static int maxPlayers;
     private static ArrayList<Question> questions;
+    private static ArrayList<Question> selectedQuestions;
     private static boolean questionnaire;
     private static int timeLimit;
     private static int maxPoints;
     private static int maxQuestions;
+    private static int currentQuestionId;
 
-    private Game (){
+    private ZiuqGame(){
     }
 
     public static ArrayList<Player> getPlayers() {
@@ -72,6 +75,15 @@ public final class Game {
     }
 
     public static void setMaxQuestions(int newMaxQuestions) {
-        maxQuestions = newMaxQuestions;
+        if (newMaxQuestions <= questions.size())
+            maxQuestions = newMaxQuestions;
     }
+
+    public static Question nextQuestion() {
+        currentQuestionId++;
+        if (currentQuestionId < maxQuestions)
+            return selectedQuestions.get(currentQuestionId);
+        return null;
+    }
+
 }

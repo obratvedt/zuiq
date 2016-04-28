@@ -3,7 +3,7 @@ package com.example.oyvin.zuiq.sprites;
 
 import android.view.MotionEvent;
 
-import com.example.oyvin.zuiq.Game;
+import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.states.ConfigState;
 import com.example.oyvin.zuiq.states.GameModeState;
 
@@ -36,7 +36,7 @@ public class OptionBtn extends Sprite implements TouchListener{
     public boolean onTouchDown(MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                Game.setQuestionnaire(gameMode);
+                ZiuqGame.setQuestionnaire(gameMode);
                 GameModeState.getInstance().switchState(ConfigState.getInstance());
                 return true;
             }
