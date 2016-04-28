@@ -17,7 +17,7 @@ public final class ZiuqGame {
     private static int timeLimit;
     private static int maxPoints = 10;
     private static int maxQuestions;
-    private static int currentQuestionId = 0;
+    private static int currentQuestionId = -1;
 
     private ZiuqGame(){
     }
@@ -97,6 +97,10 @@ public final class ZiuqGame {
         for(int i = 0; i < questionLimit; i++) {
             selectedQuestions.add(tmp.remove(rand.nextInt(tmp.size())));
         }
+    }
+
+    public static boolean hasNextQuestion() {
+        return currentQuestionId < maxQuestions;
     }
 
     public static Question nextQuestion() {

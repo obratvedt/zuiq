@@ -12,7 +12,6 @@ public class ConfigController {
     private int numberOfQuestions;
 
     private ConfigController() {
-
     }
 
     public static ConfigController getInstance() {
