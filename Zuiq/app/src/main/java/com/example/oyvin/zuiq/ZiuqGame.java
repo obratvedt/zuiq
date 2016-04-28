@@ -5,6 +5,7 @@ import com.example.oyvin.zuiq.models.Player;
 import com.example.oyvin.zuiq.models.Question;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public final class ZiuqGame {
 
@@ -77,6 +78,21 @@ public final class ZiuqGame {
     public static void setMaxQuestions(int newMaxQuestions) {
         if (newMaxQuestions <= questions.size())
             maxQuestions = newMaxQuestions;
+    }
+
+    public static ArrayList<Question> getSelectedQuestions() {
+        return selectedQuestions;
+    }
+
+    public static void selectQuestions(Random rand) {
+        int questionLimit = questions.size();
+        if (questionnaire)
+            questionLimit = maxQuestions;
+        ArrayList<Question> tmp = new ArrayList<>(questions);
+        selectedQuestions = new ArrayList<>();
+        for(int i = 0; i < questionLimit; i++) {
+            selectedQuestions.add(tmp.remove(rand.nextInt(tmp.size())));
+        }
     }
 
     public static Question nextQuestion() {
