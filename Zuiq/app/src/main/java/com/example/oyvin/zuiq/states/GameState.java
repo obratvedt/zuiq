@@ -3,6 +3,7 @@ package com.example.oyvin.zuiq.states;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.ZiuqGame;
@@ -10,6 +11,7 @@ import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.helpers.Highscore;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import sheep.graphics.Image;
@@ -20,7 +22,10 @@ public class GameState extends BackgroundState {
     public AnswerBtn ans1, ans2, ans3, ans4;
     public GameController controller;
     public String state;
-    Paint playerPaint, answerPaint, scorePaint;
+    Paint playerPaint, scorePaint;
+    Paint ans1Paint, ans2Paint, ans3Paint, ans4Paint;
+    public ArrayList<AnswerBtn> ansbtns = new ArrayList<>();
+    public ArrayList<Paint> anspaints = new ArrayList<>();
 
 
     public static GameState getInstance() {
@@ -32,18 +37,36 @@ public class GameState extends BackgroundState {
 
     private GameState() {
         super();
+
         ans1 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans2 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans3 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans4 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
 
+        ansbtns.add(ans1);
+        ansbtns.add(ans2);
+        ansbtns.add(ans3);
+        ansbtns.add(ans4);
+
+
         playerPaint = new Paint();
         playerPaint.setColor(Color.WHITE);
-        playerPaint.setTextSize(50);
+        playerPaint.setTextSize(100);
 
-        answerPaint = new Paint();
-        answerPaint.setColor(Color.BLACK);
-        answerPaint.setTextSize(75);
+        ans1Paint = new Paint();
+        ans2Paint = new Paint();
+        ans3Paint = new Paint();
+        ans4Paint = new Paint();
+
+        ans1Paint.setColor(Color.BLACK);
+        ans2Paint.setColor(Color.BLACK);
+        ans3Paint.setColor(Color.BLACK);
+        ans4Paint.setColor(Color.BLACK);
+
+        anspaints.add(ans1Paint);
+        anspaints.add(ans2Paint);
+        anspaints.add(ans3Paint);
+        anspaints.add(ans4Paint);
 
         ZiuqGame.selectQuestions(new Random());
         controller = new GameController(this);
@@ -104,8 +127,7 @@ public class GameState extends BackgroundState {
     }
 
     public void drawPause() {
-        thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 2 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
-
+        thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
     }
 
     public void drawQuestion () {
@@ -114,16 +136,15 @@ public class GameState extends BackgroundState {
         ans3.draw(thisCanvas);
         ans4.draw(thisCanvas);
 
-        thisCanvas.drawText(ans1.text, ans1.getX(), ans1.getY(), answerPaint);
-        thisCanvas.drawText(ans2.text, ans2.getX(), ans2.getY(), answerPaint);
-        thisCanvas.drawText(ans3.text, ans3.getX(), ans3.getY(), answerPaint);
-        thisCanvas.drawText(ans4.text, ans4.getX(), ans4.getY(), answerPaint);
-
+        for (int i = 0; i < anspaints.size(); i++) {
+            anspaints.get(i).setTextSize(75 -  (1.3f*ansbtns.get(i).text.length()));
+            thisCanvas.drawText(ansbtns.get(i).text, ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/3, ansbtns.get(i).getY(), anspaints.get(i));
+        }
     }
 
     public void drawScore () {
-        Highscore hi = new Highscore(ZiuqGame.getPlayers());
-        thisCanvas.drawText(hi.getHighscore(), thisCanvas.getWidth()/2, thisCanvas.getHeight()/2, playerPaint);
+        Highscore hi = new Highscore(new ArrayList<>(ZiuqGame.getPlayers()));
+        thisCanvas.drawText(hi.getHighscore(), thisCanvas.getWidth()/5, thisCanvas.getHeight()/2, playerPaint);
     }
 
     public void update(float dt) {

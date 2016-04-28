@@ -11,7 +11,7 @@ import sheep.input.TouchListener;
 public class AnswerBtn extends Sprite implements TouchListener {
     float imageHeight,imageWidth;
     public String correct;
-    public String text;
+    public String text = "";
 
     public AnswerBtn(Image image, String correct){
         super(image);

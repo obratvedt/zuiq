@@ -1,6 +1,7 @@
 package com.example.oyvin.zuiq.controllers;
 
 import android.graphics.Canvas;
+import android.graphics.Rect;
 
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.ZiuqGame;
@@ -24,6 +25,7 @@ public class GameController {
     GameState game;
     Canvas canvas;
     ArrayList<AnswerBtn> ansButtons = new ArrayList<>();
+    Question thisQuestion;
 
     private Timer timer;
     private int delay = 0;
@@ -87,7 +89,7 @@ public class GameController {
     public boolean inst = false;
 
     public int currentPlayer = 0;
-    public int currentQuestion = 0;
+    public int currentQuestion = 1;
 
     public GameController(GameState game) {
         this.game = game;
@@ -109,21 +111,20 @@ public class GameController {
 
         System.out.println("Players " + ZiuqGame.getPlayers().toString());
         game.state = "q";
+        thisQuestion = ZiuqGame.nextQuestion();
         play();
 
     }
 
-    Question thisQuestion = ZiuqGame.nextQuestion();
-    public void play() {
 
-        /*
-        System.out.println("QUESTION IS : " + thisQuestion.toString());
+    public void play() {
+        System.out.println("QUESTION IS : " + thisQuestion.getText());
         System.out.println("ANSWERS ARE : " + thisQuestion.getAnswers().toString());
         System.out.println("CORRECT ANSWER IS : " + thisQuestion.getRightAnswer().toString());
-        */
+
 
         if (ZiuqGame.isQuestionnaire()) {
-            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion >= ZiuqGame.getMaxQuestions()) {
+            if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion > ZiuqGame.getMaxQuestions()) {
                 game.state = "hs";
             }
             else if (currentPlayer >= ZiuqGame.getPlayers().size()) {
