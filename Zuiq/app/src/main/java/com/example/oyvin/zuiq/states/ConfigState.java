@@ -18,7 +18,6 @@ import sheep.graphics.Image;
  */
 public class ConfigState extends BackgroundState {
     private static ConfigState configState = null;
-    private ConfigController controller;
     Paint dscrtextPaint, varTextPaint, navPaint;
     PosNegBtn addPlayer, removePlayer, addSecond, removeSecond, addQuestion, removeQuestion, addScore, removeScore;
     StartBtn startGame;
