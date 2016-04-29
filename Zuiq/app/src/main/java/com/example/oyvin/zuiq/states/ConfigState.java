@@ -186,14 +186,7 @@ public class ConfigState extends BackgroundState {
     //Removing listeners on switch state action
     public void switchState(State state){
         super.switchState(state);
-        removeTouchListener(addPlayer);
-        removeTouchListener(removePlayer);
-        removeTouchListener(addSecond);
-        removeTouchListener(removeSecond);
-        removeTouchListener(addQuestion);
-        removeTouchListener(removeQuestion);
-        removeTouchListener(addScore);
-        removeTouchListener(removeScore);
+
     }
 }
 
