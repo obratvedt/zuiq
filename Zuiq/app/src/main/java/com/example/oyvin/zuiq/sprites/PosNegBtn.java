@@ -37,10 +37,10 @@ public class PosNegBtn extends Button {
             ConfigController.getInstance().addNumberOfQuestions(-1);
         }
         else if (type.equals("addScore")){
-            ConfigController.getInstance().addScoreLimit(1);
+            ConfigController.getInstance().addScoreLimit(50);
         }
         else if (type.equals("removeScore")){
-            ConfigController.getInstance().addScoreLimit(-1);
+            ConfigController.getInstance().addScoreLimit(-50);
         }
     }
 
