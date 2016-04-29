@@ -23,8 +23,6 @@ public class StartState extends BackgroundState {
         logo = new Logo(logoImg);
         startBtn = new StartBtn(startBtnImg, "config");
         this.addTouchListener(startBtn);
-
-
     }
 
     public static StartState getInstance() {
