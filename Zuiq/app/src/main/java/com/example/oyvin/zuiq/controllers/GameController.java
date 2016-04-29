@@ -26,6 +26,7 @@ public class GameController {
     Canvas canvas;
     ArrayList<AnswerBtn> ansButtons = new ArrayList<>();
     public Question thisQuestion;
+    public Question prevQuestion;
 
     private Timer timer;
     private int delay = 0;
@@ -120,11 +121,11 @@ public class GameController {
 
     public void play() {
 
-        /*
+
         System.out.println("QUESTION " + thisQuestion.getText());
         System.out.println("ANSWERS " + thisQuestion.getAnswers().toString());
         System.out.println("RIGHT " + thisQuestion.getRightAnswer().toString());
-        */
+
 
         if (ZiuqGame.isQuestionnaire()) {
             //QUESTIONNAIRE GAMEMODE
@@ -134,6 +135,7 @@ public class GameController {
             else if (currentPlayer >= ZiuqGame.getPlayers().size()) {
                 currentPlayer = 0;
                 currentQuestion += 1;
+                prevQuestion = thisQuestion;
                 thisQuestion = ZiuqGame.nextQuestion();
                 game.state = "s";
                 secondsLeft = 15;
@@ -237,7 +239,18 @@ public class GameController {
     public void isCorrect(String str) {
         if (str.equals("correct")) {
             System.out.println("Correct answer");
-            ZiuqGame.getPlayers().get(currentPlayer).setScore(ZiuqGame.getPlayers().get(currentPlayer).getScore() + 1);
+            if (ZiuqGame.getTimeLimit() != 0) {
+                double scoreBase = (double)secondsLeft / (double)ZiuqGame.getTimeLimit();
+
+                ZiuqGame.getPlayers().get(currentPlayer).setScore(ZiuqGame.getPlayers().get(currentPlayer).getScore() +
+                        (int) (Math.floor((scoreBase * 50))));
+
+            }
+            else {
+                ZiuqGame.getPlayers().get(currentPlayer).setScore(ZiuqGame.getPlayers().get(currentPlayer).getScore() + 50);
+            }
+
+
             if (ZiuqGame.getPlayers().get(currentPlayer).getScore() >= ZiuqGame.getMaxPoints() && !ZiuqGame.isQuestionnaire()) {
                 game.state = "hs";
             }

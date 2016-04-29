@@ -76,7 +76,7 @@ public class GameState extends BackgroundState {
         ans4Paint.setColor(Color.BLACK);
         QuestionPaint.setColor(Color.WHITE);
         TimerPaint.setColor(Color.WHITE);
-        TimerPaint.setTextSize(75);
+        TimerPaint.setTextSize(150);
 
         anspaints.add(ans1Paint);
         anspaints.add(ans2Paint);
@@ -95,7 +95,7 @@ public class GameState extends BackgroundState {
         ans2.setPosition(canvas.getWidth() / 2 + 300, canvas.getHeight() / 3);
         ans3.setPosition(canvas.getWidth() / 2 - 300, canvas.getHeight() / 1.5f);
         ans4.setPosition(canvas.getWidth() / 2 + 300, canvas.getHeight() / 1.5f);
-        rdy.setPosition(canvas.getWidth() / 2, canvas.getHeight()/1.5f);
+        rdy.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 1.5f);
 
         if (controller.inst == false) {
             controller.init();
@@ -173,13 +173,15 @@ public class GameState extends BackgroundState {
 
     public void drawPause() {
         thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
-        System.out.println("AJDIPDJAIJDIS");
         rdy.draw(thisCanvas);
     }
 
     public void drawHighScore () {
-        thisCanvas.drawText("GAME FINISHED", thisCanvas.getWidth() / 4, thisCanvas.getHeight()/5, playerPaint);
-        drawScore();
+        thisCanvas.drawText("GAME FINISHED", thisCanvas.getWidth() / 4, thisCanvas.getHeight() / 5, playerPaint);
+        Highscore hi = new Highscore(new ArrayList<>(ZiuqGame.getPlayers()));
+        for (int i = 0; i < hi.getHighscore().size(); i++) {
+            thisCanvas.drawText(hi.getHighscore().get(i).toString(), thisCanvas.getWidth()/5, (thisCanvas.getHeight()/3)+100*i, playerPaint );
+        }
     }
     public void drawQuestion () {
         ans1.draw(thisCanvas);
@@ -196,7 +198,7 @@ public class GameState extends BackgroundState {
 
         thisCanvas.drawText(controller.thisQuestion.getText(), thisCanvas.getWidth()/10, thisCanvas.getHeight()/5, QuestionPaint);
 
-        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-100, thisCanvas.getHeight()/10, TimerPaint);
+        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-200, thisCanvas.getHeight()/10, TimerPaint);
 
 
     }
@@ -208,6 +210,16 @@ public class GameState extends BackgroundState {
         for (int i = 0; i < hi.getHighscore().size(); i++) {
             thisCanvas.drawText(hi.getHighscore().get(i).toString(), thisCanvas.getWidth()/5, (thisCanvas.getHeight()/3)+100*i, playerPaint );
         }
+        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-200, thisCanvas.getHeight()/10, TimerPaint);
+
+        if (state == "s") {
+            thisCanvas.drawText("Correct answer was : ", thisCanvas.getWidth()/9,
+                    thisCanvas.getHeight()/1.2f, playerPaint );
+            thisCanvas.drawText(controller.prevQuestion.getRightAnswer().getText(),thisCanvas.getWidth()/9,
+                    thisCanvas.getHeight()/1.1f, playerPaint );
+        }
+
+
     }
 
     public void update(float dt) {
