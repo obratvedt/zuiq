@@ -80,6 +80,8 @@ public class GameState extends BackgroundState {
         anspaints.add(ans3Paint);
         anspaints.add(ans4Paint);
 
+        this.addTouchListener(rdy);
+
         ZiuqGame.selectQuestions(new Random());
         controller = new GameController(this);
     }
@@ -99,7 +101,7 @@ public class GameState extends BackgroundState {
         ans4.setPosition(canvas.getWidth() / 2 + 250, canvas.getHeight() / 1.5f);
 
         rdy.setScale(0.2f, 0.2f);
-        rdy.setPosition(thisCanvas.getWidth() / 2, thisCanvas.getHeight()/1.5f);
+        rdy.setPosition(canvas.getWidth() / 2, canvas.getHeight()/1.5f);
 
 
         if (controller.inst == false) {
@@ -119,6 +121,7 @@ public class GameState extends BackgroundState {
                 drawQuestion();
             }
             else if (state.equals("p")) {
+
                 this.removeTouchListener(ans1);
                 this.removeTouchListener(ans2);
                 this.removeTouchListener(ans3);
@@ -148,8 +151,6 @@ public class GameState extends BackgroundState {
     }
 
     public void drawPause() {
-        this.addTouchListener(rdy);
-
         thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
 
         rdy.draw(thisCanvas);
