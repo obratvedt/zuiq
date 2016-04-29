@@ -16,9 +16,9 @@ public final class ZiuqGame {
     private static ArrayList<Question> questions;
     private static ArrayList<Question> selectedQuestions;
     private static boolean questionnaire;
-    private static int timeLimit;
+    private static int timeLimit = 10;
     private static int maxPoints = 10;
-    private static int maxQuestions;
+    private static int maxQuestions = 1;
     private static int currentQuestionId = -1;
     private static Context context;
 
@@ -62,7 +62,7 @@ public final class ZiuqGame {
     }
 
     public static void  setTimeLimit(int newTimeLimit) {
-        if (newTimeLimit > 0 && newTimeLimit <= 30)
+        if (newTimeLimit >= 0 && newTimeLimit <= 30)
             timeLimit = newTimeLimit;
     }
 
@@ -127,7 +127,7 @@ public final class ZiuqGame {
         maxPlayers = 1;
         selectedQuestions = new ArrayList<>();
         questionnaire = false;
-        timeLimit = 0;
+        timeLimit = 10;
         maxPoints = 10;
         maxQuestions = questions.size();
         currentQuestionId = -1;

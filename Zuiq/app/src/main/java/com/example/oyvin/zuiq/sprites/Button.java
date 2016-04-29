@@ -20,8 +20,8 @@ public abstract class Button extends Sprite implements TouchListener {
 
     public Button(Image image, float scaleX, float scaleY) {
         super(image);
-        imageHeight = image.getHeight();
-        imageWidth = image.getWidth();
+        imageHeight = image.getHeight() * scaleY;
+        imageWidth = image.getWidth() * scaleX;
         setScale(scaleX, scaleY);
     }
 
@@ -49,8 +49,8 @@ public abstract class Button extends Sprite implements TouchListener {
     }
 
     protected boolean touchOnSprite(float xPos, float yPos) {
-        if (xPos >= getX() - imageHeight / 2 && xPos <= getX() + imageWidth / 2) {
-            if (yPos >= getY() - imageHeight / 2 && yPos <= getY() + imageHeight / 2) {
+        if (xPos >= getX() - (imageWidth / 2) && xPos <= getX() + (imageWidth / 2)) {
+            if (yPos >= getY() - (imageHeight / 2) && yPos <= getY() + (imageHeight / 2)) {
                 return true;
             }
         }
