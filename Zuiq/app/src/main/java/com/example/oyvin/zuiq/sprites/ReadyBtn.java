@@ -1,6 +1,6 @@
 package com.example.oyvin.zuiq.sprites;
 
-        import com.example.oyvin.zuiq.states.GameState;
+import com.example.oyvin.zuiq.states.GameState;
 
         import sheep.graphics.Image;
 
