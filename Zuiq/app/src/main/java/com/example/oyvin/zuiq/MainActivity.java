@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
         // Load all the questions
         AssetManager am = getAssets();
         ZiuqGame.setQuestions(FileOperations.loadQuestions(am));
+        ZiuqGame.setContext(getApplicationContext());
         // Push the main state.
         game.pushState(StartState.getInstance());
         // View the game.

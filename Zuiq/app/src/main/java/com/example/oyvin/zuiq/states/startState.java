@@ -1,6 +1,5 @@
 package com.example.oyvin.zuiq.states;
 
-
 import android.graphics.Canvas;
 
 import com.example.oyvin.zuiq.R;
@@ -8,7 +7,6 @@ import com.example.oyvin.zuiq.sprites.Logo;
 import com.example.oyvin.zuiq.sprites.StartBtn;
 
 import sheep.graphics.Image;
-
 
 public class StartState extends BackgroundState {
     private static StartState startState = null;

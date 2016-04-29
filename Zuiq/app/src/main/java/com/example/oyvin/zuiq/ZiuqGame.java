@@ -1,8 +1,10 @@
 package com.example.oyvin.zuiq;
 
-import com.example.oyvin.zuiq.helpers.FileOperations;
+import android.content.Context;
+
 import com.example.oyvin.zuiq.models.Player;
 import com.example.oyvin.zuiq.models.Question;
+import com.example.oyvin.zuiq.states.GameState;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,6 +20,7 @@ public final class ZiuqGame {
     private static int maxPoints = 10;
     private static int maxQuestions;
     private static int currentQuestionId = -1;
+    private static Context context;
 
     private ZiuqGame(){
     }
@@ -100,6 +103,14 @@ public final class ZiuqGame {
         }
     }
 
+    public static Context getContext() {
+        return context;
+    }
+
+    public static void setContext(Context newContext) {
+        context = newContext;
+    }
+
     public static boolean hasNextQuestion() {
         return currentQuestionId < maxQuestions;
     }
@@ -114,7 +125,6 @@ public final class ZiuqGame {
     public static void resetGame() {
         players = new ArrayList<>();
         maxPlayers = 1;
-        questions = new ArrayList<>();
         selectedQuestions = new ArrayList<>();
         questionnaire = false;
         timeLimit = 0;

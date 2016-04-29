@@ -13,9 +13,6 @@ import com.example.oyvin.zuiq.sprites.StartBtn;
 import sheep.game.State;
 import sheep.graphics.Image;
 
-/**
- * Created by oyvind on 21/04/2016.
- */
 public class ConfigState extends BackgroundState {
     private static ConfigState configState = null;
     Paint dscrtextPaint, varTextPaint, navPaint;
