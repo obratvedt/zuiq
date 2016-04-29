@@ -58,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/CancelBtn.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#309#310#0" expanded="true" />
@@ -72,35 +72,49 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Button.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Button.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.669399">
+              <caret line="9" column="110" selection-start-line="9" selection-start-column="110" selection-end-line="9" selection-end-column="110" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1088#1089#0" expanded="true" />
-                <element signature="e#1116#1117#0" expanded="true" />
-                <element signature="e#1189#1190#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
+                <element signature="e#1749#1750#0" expanded="true" />
+                <element signature="e#1777#1778#0" expanded="true" />
+                <element signature="e#1850#1851#0" expanded="true" />
+                <element signature="e#1878#1879#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZiuqGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ZiuqGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/ZiuqGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4262295">
-              <caret line="129" column="23" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="149" column="74" selection-start-line="149" selection-start-column="74" selection-end-line="149" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2267#2268#0" expanded="true" />
-                <element signature="e#2312#2313#0" expanded="true" />
-                <element signature="e#3138#3139#0" expanded="true" />
-                <element signature="e#3168#3169#0" expanded="true" />
-                <element signature="e#3225#3226#0" expanded="true" />
-                <element signature="e#3261#3262#0" expanded="true" />
+                <element signature="e#1699#1700#0" expanded="true" />
+                <element signature="e#1739#1740#0" expanded="true" />
+                <element signature="e#1786#1787#0" expanded="true" />
+                <element signature="e#1822#1823#0" expanded="true" />
+                <element signature="e#1979#1980#0" expanded="true" />
+                <element signature="e#2011#2012#0" expanded="true" />
+                <element signature="e#2206#2207#0" expanded="true" />
+                <element signature="e#2238#2239#0" expanded="true" />
+                <element signature="e#2462#2463#0" expanded="true" />
+                <element signature="e#2507#2508#0" expanded="true" />
+                <element signature="e#2550#2551#0" expanded="true" />
+                <element signature="e#2585#2586#0" expanded="true" />
+                <element signature="e#2834#2835#0" expanded="true" />
+                <element signature="e#2874#2875#0" expanded="true" />
+                <element signature="e#3605#3606#0" expanded="true" />
+                <element signature="e#3635#3636#0" expanded="true" />
+                <element signature="e#3692#3693#0" expanded="true" />
+                <element signature="e#3728#3729#0" expanded="true" />
+                <element signature="e#3860#3861#0" expanded="true" />
+                <element signature="e#3915#3916#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1728,12 +1742,12 @@
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/ReadyBtn.java" />
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/states/BackgroundState.java" />
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/states/StartState.java" />
-        <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/Button.java" />
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/StartBtn.java" />
-        <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/CancelBtn.java" />
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/PosNegBtn.java" />
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/MainActivity.java" />
+        <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/CancelBtn.java" />
         <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/ZiuqGame.java" />
+        <option value="$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/Button.java" />
       </list>
     </option>
   </component>
@@ -2247,12 +2261,26 @@
           <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#2312#2313#0" expanded="true" />
-            <element signature="e#3138#3139#0" expanded="true" />
-            <element signature="e#3168#3169#0" expanded="true" />
-            <element signature="e#3225#3226#0" expanded="true" />
-            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1979#1980#0" expanded="true" />
+            <element signature="e#2011#2012#0" expanded="true" />
+            <element signature="e#2206#2207#0" expanded="true" />
+            <element signature="e#2238#2239#0" expanded="true" />
+            <element signature="e#2462#2463#0" expanded="true" />
+            <element signature="e#2507#2508#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2585#2586#0" expanded="true" />
+            <element signature="e#2834#2835#0" expanded="true" />
+            <element signature="e#2874#2875#0" expanded="true" />
+            <element signature="e#3605#3606#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+            <element signature="e#3692#3693#0" expanded="true" />
+            <element signature="e#3728#3729#0" expanded="true" />
+            <element signature="e#3860#3861#0" expanded="true" />
+            <element signature="e#3915#3916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2305,12 +2333,26 @@
           <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#2312#2313#0" expanded="true" />
-            <element signature="e#3138#3139#0" expanded="true" />
-            <element signature="e#3168#3169#0" expanded="true" />
-            <element signature="e#3225#3226#0" expanded="true" />
-            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1979#1980#0" expanded="true" />
+            <element signature="e#2011#2012#0" expanded="true" />
+            <element signature="e#2206#2207#0" expanded="true" />
+            <element signature="e#2238#2239#0" expanded="true" />
+            <element signature="e#2462#2463#0" expanded="true" />
+            <element signature="e#2507#2508#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2585#2586#0" expanded="true" />
+            <element signature="e#2834#2835#0" expanded="true" />
+            <element signature="e#2874#2875#0" expanded="true" />
+            <element signature="e#3605#3606#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+            <element signature="e#3692#3693#0" expanded="true" />
+            <element signature="e#3728#3729#0" expanded="true" />
+            <element signature="e#3860#3861#0" expanded="true" />
+            <element signature="e#3915#3916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2391,12 +2433,26 @@
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#2312#2313#0" expanded="true" />
-            <element signature="e#3138#3139#0" expanded="true" />
-            <element signature="e#3168#3169#0" expanded="true" />
-            <element signature="e#3225#3226#0" expanded="true" />
-            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1979#1980#0" expanded="true" />
+            <element signature="e#2011#2012#0" expanded="true" />
+            <element signature="e#2206#2207#0" expanded="true" />
+            <element signature="e#2238#2239#0" expanded="true" />
+            <element signature="e#2462#2463#0" expanded="true" />
+            <element signature="e#2507#2508#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2585#2586#0" expanded="true" />
+            <element signature="e#2834#2835#0" expanded="true" />
+            <element signature="e#2874#2875#0" expanded="true" />
+            <element signature="e#3605#3606#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+            <element signature="e#3692#3693#0" expanded="true" />
+            <element signature="e#3728#3729#0" expanded="true" />
+            <element signature="e#3860#3861#0" expanded="true" />
+            <element signature="e#3915#3916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2577,20 +2633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1189#1190#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/controllers/ConfigController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9453552">
@@ -2623,10 +2665,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/PosNegBtn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2641,20 +2683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/PosNegBtn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/CancelBtn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#309#310#0" expanded="true" />
@@ -2669,16 +2701,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/ZiuqGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4262295">
-          <caret line="129" column="23" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="149" column="74" selection-start-line="149" selection-start-column="74" selection-end-line="149" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#2312#2313#0" expanded="true" />
-            <element signature="e#3138#3139#0" expanded="true" />
-            <element signature="e#3168#3169#0" expanded="true" />
-            <element signature="e#3225#3226#0" expanded="true" />
-            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1979#1980#0" expanded="true" />
+            <element signature="e#2011#2012#0" expanded="true" />
+            <element signature="e#2206#2207#0" expanded="true" />
+            <element signature="e#2238#2239#0" expanded="true" />
+            <element signature="e#2462#2463#0" expanded="true" />
+            <element signature="e#2507#2508#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2585#2586#0" expanded="true" />
+            <element signature="e#2834#2835#0" expanded="true" />
+            <element signature="e#2874#2875#0" expanded="true" />
+            <element signature="e#3605#3606#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+            <element signature="e#3692#3693#0" expanded="true" />
+            <element signature="e#3728#3729#0" expanded="true" />
+            <element signature="e#3860#3861#0" expanded="true" />
+            <element signature="e#3915#3916#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zuiq/app/src/main/java/com/example/oyvin/zuiq/sprites/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.669399">
+          <caret line="9" column="110" selection-start-line="9" selection-start-column="110" selection-end-line="9" selection-end-column="110" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1749#1750#0" expanded="true" />
+            <element signature="e#1777#1778#0" expanded="true" />
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1878#1879#0" expanded="true" />
           </folding>
         </state>
       </provider>

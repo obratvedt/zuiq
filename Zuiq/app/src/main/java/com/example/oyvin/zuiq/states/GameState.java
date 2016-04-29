@@ -17,6 +17,15 @@ import java.util.ArrayList;
 import sheep.graphics.Image;
 
 public class GameState extends BackgroundState {
+
+
+    //FIELDS AND DECLARATIONS
+    //
+    //Here are the different fields, sprites, objects, paints to be used within
+    //the game state. Some of them are public so they can be accessed and changed
+    //from other sections of the program.
+    //
+    //---------------------------->>
     private static GameState gameState = null;
     public Canvas thisCanvas;
     public AnswerBtn ans1, ans2, ans3, ans4;
@@ -33,8 +42,10 @@ public class GameState extends BackgroundState {
 
     private boolean answerListeners = false;
     private boolean pauseListener = false;
+    //<<----------------------------
 
 
+    //STATE
     public static GameState getInstance() {
         if(gameState == null){
             gameState = new GameState();
@@ -42,6 +53,14 @@ public class GameState extends BackgroundState {
         return gameState;
     }
 
+
+    //CONSTRUCTOR
+    //
+    //Here the constructor gives values and properties to the different buttons,
+    //sprites, paints and text fields. This is also where the controller is made
+    //and set.
+    //
+    //---------------------------->>
     private GameState() {
         super();
 
@@ -83,9 +102,21 @@ public class GameState extends BackgroundState {
         anspaints.add(ans4Paint);
 
         this.addTouchListener(cancelBtn);
+
+        //Controller
         controller = new GameController(this);
     }
+    //<<----------------------------
 
+
+    //DRAW
+    //
+    //This is where the view graphics are drawn. The draw function will check if
+    //the controller has been initialized through the inst boolean. If not, it will
+    //init the controller once. Further on it will draw the different parts of the game
+    //based on the current state.
+    //
+    //<<----------------------------
     public void draw(Canvas canvas){
         super.draw(canvas);
         thisCanvas = canvas;
@@ -95,15 +126,20 @@ public class GameState extends BackgroundState {
         ans3.setPosition(canvas.getWidth() / 2 - 300, canvas.getHeight() / 1.5f);
         ans4.setPosition(canvas.getWidth() / 2 + 300, canvas.getHeight() / 1.5f);
         rdy.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 1.5f);
-        cancelBtn.setPosition(canvas.getWidth()/9, canvas.getHeight()/9);
+        cancelBtn.setPosition(canvas.getWidth()/9, canvas.getHeight() / 9);
         cancelBtn.draw(canvas);
 
 
+        //Init controller
         if (controller.inst == false) {
             controller.init();
             controller.inst = true;
         }
+
+        //If already init'ed
         else {
+
+            //Check which state the game is in and draw buttons / text, and remove/add listeners accordingly.
             if (state.equals("q")) {
                 if (!answerListeners) {
                     this.addTouchListener(ans1);
@@ -172,14 +208,26 @@ public class GameState extends BackgroundState {
             }
         }
     }
+    //<<----------------------------
 
+
+    //OTHER DRAW FUNCTIONS
+    //
+    //These functions are used by the main draw function to individually draw
+    //different parts of the game.
+    //
+    //---------------------------->>
     public void drawPause() {
         thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
         rdy.draw(thisCanvas);
     }
 
     public void drawHighScore () {
+
+        //Draw the scores when the game is finished.
         thisCanvas.drawText("GAME FINISHED", thisCanvas.getWidth() / 4, thisCanvas.getHeight() / 5, playerPaint);
+
+        //Get a sorted list wit hthe players score and draw it to the canvas sorted.
         Highscore hi = new Highscore(new ArrayList<>(ZiuqGame.getPlayers()));
         for (int i = 0; i < hi.getHighscore().size(); i++) {
             thisCanvas.drawText(hi.getHighscore().get(i).toString(), thisCanvas.getWidth()/5, (thisCanvas.getHeight()/3)+100*i, playerPaint );
@@ -191,39 +239,50 @@ public class GameState extends BackgroundState {
         ans3.draw(thisCanvas);
         ans4.draw(thisCanvas);
 
+        //Draw the answers on the correct buttons
         for (int i = 0; i < anspaints.size(); i++) {
             anspaints.get(i).setTextSize(75 -  (1.4f*ansbtns.get(i).getText().length()));
             thisCanvas.drawText(ansbtns.get(i).getText(), ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/3, ansbtns.get(i).getY(), anspaints.get(i));
         }
 
-        QuestionPaint.setTextSize(100 - 0.9f * controller.thisQuestion.getText().length());
+        QuestionPaint.setTextSize(100 - 0.9f * controller.getThisQuestion().getText().length());
 
-        thisCanvas.drawText(controller.thisQuestion.getText(), thisCanvas.getWidth()/10, thisCanvas.getHeight()/5, QuestionPaint);
+        //Draw the question
+        thisCanvas.drawText(controller.getThisQuestion().getText(), thisCanvas.getWidth()/10, thisCanvas.getHeight()/5, QuestionPaint);
 
-        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-200, thisCanvas.getHeight()/10, TimerPaint);
+        //Draw the time limit if there is one
+        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.getSecondsLeft(), thisCanvas.getWidth()-200, thisCanvas.getHeight()/10, TimerPaint);
 
 
     }
 
     public void drawScore () {
 
-
+        //Get a sorted list with the players, sorted by their current score.
         Highscore hi = new Highscore(new ArrayList<>(ZiuqGame.getPlayers()));
+
+        //Draw the players score sorted
         for (int i = 0; i < hi.getHighscore().size(); i++) {
             thisCanvas.drawText(hi.getHighscore().get(i).toString(), thisCanvas.getWidth()/5, (thisCanvas.getHeight()/3)+100*i, playerPaint );
         }
-        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-200, thisCanvas.getHeight()/10, TimerPaint);
 
+        //Draw the current time limit until the game continues
+        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.getSecondsLeft(), thisCanvas.getWidth()-200, thisCanvas.getHeight()/10, TimerPaint);
+
+        //If the players recently have answered a question, draw the correct answer for the previous question.
         if (state == "s") {
             thisCanvas.drawText("Correct answer was : ", thisCanvas.getWidth()/9,
                     thisCanvas.getHeight()/1.2f, playerPaint );
-            thisCanvas.drawText(controller.prevQuestion.getRightAnswer().getText(),thisCanvas.getWidth()/9,
+            thisCanvas.drawText(controller.getPrevQuestion().getRightAnswer().getText(),thisCanvas.getWidth()/9,
                     thisCanvas.getHeight()/1.1f, playerPaint );
         }
 
 
     }
+    //<<----------------------------
 
+
+    //UPDATE
     public void update(float dt) {
         super.update(dt);
         ans1.update(dt);

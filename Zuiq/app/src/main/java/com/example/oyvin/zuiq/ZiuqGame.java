@@ -38,6 +38,10 @@ public final class ZiuqGame {
         return maxPlayers;
     }
 
+    /**
+     * Set the number of players that are participating in a game
+     * @param newMaxPlayers
+     */
     public static void setMaxPlayers(int newMaxPlayers) {
         if (newMaxPlayers > 0 && newMaxPlayers <= 5)
             maxPlayers = newMaxPlayers;
@@ -47,6 +51,10 @@ public final class ZiuqGame {
         return questions;
     }
 
+    /**
+     * Set all the questions for the game
+     * @param newQuestions
+     */
     public static void setQuestions(ArrayList<Question> newQuestions) {
         questions = newQuestions;
     }
@@ -94,11 +102,15 @@ public final class ZiuqGame {
         return selectedQuestions;
     }
 
+    /**
+     * Fills the selectedQuestions ArrayList with random questions
+     * @param rand
+     */
     public static void selectQuestions(Random rand) {
         int questionLimit = questions.size();
-        if (questionnaire)
+        if (questionnaire) // If the game mode is questionnaire, the question limit is based on the max questions selected by the user(s)
             questionLimit = maxQuestions;
-        ArrayList<Question> tmp = new ArrayList<>(questions);
+        ArrayList<Question> tmp = new ArrayList<>(questions); // Creating a temporary ArrayList from which we can remove
         selectedQuestions = new ArrayList<>();
         for(int i = 0; i < questionLimit; i++) {
             selectedQuestions.add(tmp.remove(rand.nextInt(tmp.size())));
@@ -113,10 +125,18 @@ public final class ZiuqGame {
         context = newContext;
     }
 
+    /**
+     * Does the game have another question to display
+     * @return
+     */
     public static boolean hasNextQuestion() {
         return currentQuestionId < maxQuestions;
     }
 
+    /**
+     * Provide the next question from the selectedQuestions ArrayList
+     * @return
+     */
     public static Question nextQuestion() {
         currentQuestionId++;
         if (currentQuestionId < selectedQuestions.size())
@@ -124,6 +144,11 @@ public final class ZiuqGame {
         return null;
     }
 
+    /**
+     * Resets all the variables, except for the context (retrieved in the MainActivity class)
+     * and the questions ArrayList with the total collection of questions.
+     * Then switches to the StartState.
+     */
     public static void resetGame() {
         players = new ArrayList<>();
         maxPlayers = 1;
