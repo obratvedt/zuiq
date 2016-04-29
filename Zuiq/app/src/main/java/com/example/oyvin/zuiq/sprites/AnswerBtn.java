@@ -1,10 +1,6 @@
 package com.example.oyvin.zuiq.sprites;
 
-import android.view.MotionEvent;
-
 import com.example.oyvin.zuiq.states.GameState;
-
-import sheep.game.Sprite;
 
 import sheep.graphics.Image;
 
