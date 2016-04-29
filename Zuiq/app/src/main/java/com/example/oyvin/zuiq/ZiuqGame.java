@@ -3,6 +3,7 @@ package com.example.oyvin.zuiq;
 import android.content.Context;
 
 import com.example.oyvin.zuiq.controllers.ConfigController;
+import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.models.Player;
 import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.states.GameState;
@@ -10,6 +11,8 @@ import com.example.oyvin.zuiq.states.StartState;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import sheep.game.Game;
 
 /**
  * A fully static class, containing all the central variables and functions for our game.
@@ -134,7 +137,16 @@ public final class ZiuqGame {
         maxPoints = 10;
         maxQuestions = questions.size();
         currentQuestionId = -1;
-        StartState.getInstance().switchState(StartState.getInstance());
-    }
 
+        //GameState.getInstance().controller.currentQuestion = 0;
+        //GameState.getInstance().controller.currentPlayer = 0;
+        //GameState.getInstance().state = "q";
+        GameState.getInstance().controller.inst = false;
+        GameState.getInstance().controller = new GameController(GameState.getInstance());
+        GameState.getInstance().controller.inst = false;
+        GameState.getInstance().controller.init();
+        //GameState.getInstance().getGame().popState();
+        GameState.getInstance().switchState(StartState.getInstance());
+
+    }
 }

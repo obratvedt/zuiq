@@ -1,11 +1,16 @@
 package com.example.oyvin.zuiq.sprites;
 
+import sheep.game.Game;
 import sheep.graphics.Image;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 import com.example.oyvin.zuiq.ZiuqGame;
+import com.example.oyvin.zuiq.states.BackgroundState;
 import com.example.oyvin.zuiq.states.ConfigState;
+import com.example.oyvin.zuiq.states.GameModeState;
+import com.example.oyvin.zuiq.states.GameState;
+import com.example.oyvin.zuiq.states.StartState;
 
 public class CancelBtn extends Button {
 
@@ -21,6 +26,7 @@ public class CancelBtn extends Button {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // continue with cancellation
+                        GameState.getInstance().controller.timesUp();
                         ZiuqGame.resetGame();
                     }
                 })

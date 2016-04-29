@@ -61,7 +61,7 @@ public class GameController {
         }
     }
 
-    private void timesUp() {
+    public void timesUp() {
         timer.cancel();
         if (game.state.equals("q")) {
             game.state = "p";
@@ -75,6 +75,9 @@ public class GameController {
         else if (game.state.equals("s")) {
             game.state = "q";
             play();
+        }
+        else {
+
         }
         System.out.println("Time's up!");
 
