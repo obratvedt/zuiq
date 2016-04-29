@@ -49,7 +49,7 @@ public abstract class Button extends Sprite implements TouchListener {
     }
 
     protected boolean touchOnSprite(float xPos, float yPos) {
-        if (xPos >= getX() - imageWidth / 2 && xPos <= getX() + imageWidth / 2) {
+        if (xPos >= getX() - imageHeight / 2 && xPos <= getX() + imageWidth / 2) {
             if (yPos >= getY() - imageHeight / 2 && yPos <= getY() + imageHeight / 2) {
                 return true;
             }

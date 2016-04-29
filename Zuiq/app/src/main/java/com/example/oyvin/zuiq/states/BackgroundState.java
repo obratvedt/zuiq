@@ -9,7 +9,6 @@ import com.example.oyvin.zuiq.sprites.Background;
 import sheep.game.State;
 import sheep.graphics.Image;
 
-
 public class BackgroundState extends State {
     Background background;
 
