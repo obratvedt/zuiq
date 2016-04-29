@@ -2,13 +2,18 @@ package com.example.oyvin.zuiq;
 
 import android.content.Context;
 
+import com.example.oyvin.zuiq.controllers.ConfigController;
 import com.example.oyvin.zuiq.models.Player;
 import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.states.GameState;
+import com.example.oyvin.zuiq.states.StartState;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * A fully static class, containing all the central variables and functions for our game.
+ */
 public final class ZiuqGame {
 
     private static ArrayList<Player> players;
@@ -22,8 +27,6 @@ public final class ZiuqGame {
     private static int currentQuestionId = -1;
     private static Context context;
 
-    private ZiuqGame(){
-    }
 
     public static ArrayList<Player> getPlayers() {
         return players;
@@ -131,6 +134,7 @@ public final class ZiuqGame {
         maxPoints = 10;
         maxQuestions = questions.size();
         currentQuestionId = -1;
+        StartState.getInstance().switchState(StartState.getInstance());
     }
 
 }
