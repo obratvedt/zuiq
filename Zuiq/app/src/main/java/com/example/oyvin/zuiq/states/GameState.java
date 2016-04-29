@@ -33,6 +33,9 @@ public class GameState extends BackgroundState {
     public ArrayList<AnswerBtn> ansbtns = new ArrayList<>();
     public ArrayList<Paint> anspaints = new ArrayList<>();
 
+    private boolean answerListeners = false;
+    private boolean pauseListener = false;
+
 
     public static GameState getInstance() {
         if(gameState == null){
@@ -110,39 +113,69 @@ public class GameState extends BackgroundState {
         else {
 
             if (state.equals("q")) {
-                this.addTouchListener(ans1);
-                this.addTouchListener(ans2);
-                this.addTouchListener(ans3);
-                this.addTouchListener(ans4);
-                this.removeTouchListener(rdy);
+
+                if (!answerListeners) {
+                    this.addTouchListener(ans1);
+                    this.addTouchListener(ans2);
+                    this.addTouchListener(ans3);
+                    this.addTouchListener(ans4);
+                    answerListeners = true;
+                }
+
+                if (pauseListener){
+                    this.removeTouchListener(rdy);
+                    pauseListener = false;
+                }
+
 
                 drawQuestion();
             }
             else if (state.equals("p")) {
-                this.removeTouchListener(ans1);
-                this.removeTouchListener(ans2);
-                this.removeTouchListener(ans3);
-                this.removeTouchListener(ans4);
-                this.addTouchListener(rdy);
+                if(answerListeners) {
+                    this.removeTouchListener(ans1);
+                    this.removeTouchListener(ans2);
+                    this.removeTouchListener(ans3);
+                    this.removeTouchListener(ans4);
+
+                    answerListeners = false;
+                }
+                if (!pauseListener) {
+                    this.addTouchListener(rdy);
+                    pauseListener = true;
+                }
                 drawPause();
 
             }
 
             else if (state.equals("s")) {
-                this.removeTouchListener(ans1);
-                this.removeTouchListener(ans2);
-                this.removeTouchListener(ans3);
-                this.removeTouchListener(ans4);
-                this.removeTouchListener(rdy);
+
+                if (answerListeners){
+                    this.removeTouchListener(ans1);
+                    this.removeTouchListener(ans2);
+                    this.removeTouchListener(ans3);
+                    this.removeTouchListener(ans4);
+                    answerListeners = false;
+                }
+                if (pauseListener) {
+                    this.removeTouchListener(rdy);
+                    pauseListener = false;
+                }
+
 
                 drawScore();
             }
             else if (state.equals("hs")) {
-                this.removeTouchListener(ans1);
-                this.removeTouchListener(ans2);
-                this.removeTouchListener(ans3);
-                this.removeTouchListener(ans4);
-                this.removeTouchListener(rdy);
+                if (answerListeners){
+                    this.removeTouchListener(ans1);
+                    this.removeTouchListener(ans2);
+                    this.removeTouchListener(ans3);
+                    this.removeTouchListener(ans4);
+                    answerListeners = false;
+                }
+                if (pauseListener) {
+                    this.removeTouchListener(rdy);
+                    pauseListener = false;
+                }
 
                 drawHighScore();
             }
