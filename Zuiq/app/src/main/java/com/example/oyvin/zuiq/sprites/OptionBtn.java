@@ -1,7 +1,5 @@
 package com.example.oyvin.zuiq.sprites;
 
-import android.view.MotionEvent;
-
 import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.states.ConfigState;
 import com.example.oyvin.zuiq.states.GameModeState;
@@ -21,6 +19,7 @@ public class OptionBtn extends Button {
     protected void onTouchDownSprite() {
         ZiuqGame.setQuestionnaire(gameMode);
         GameModeState.getInstance().switchState(ConfigState.getInstance());
+
     }
 
 }

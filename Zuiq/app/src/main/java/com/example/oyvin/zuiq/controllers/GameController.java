@@ -1,7 +1,6 @@
 package com.example.oyvin.zuiq.controllers;
 
 import android.graphics.Canvas;
-import android.graphics.Rect;
 
 import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.models.Player;
@@ -15,8 +14,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import sheep.graphics.Image;
 
 public class GameController {
 
@@ -109,6 +106,9 @@ public class GameController {
             game.state = "q";
             play();
         }
+        else if (game.state.equals("stop")){
+            //quit game
+        }
         else {
 
         }
@@ -144,6 +144,7 @@ public class GameController {
     //
     //---------------------------->>
     public void init() {
+        ZiuqGame.selectQuestions(new Random());
         canvas = game.thisCanvas;
         ArrayList<Player> players = new ArrayList<>();
         for (int i = 0; i < ZiuqGame.getMaxPlayers(); i++) {

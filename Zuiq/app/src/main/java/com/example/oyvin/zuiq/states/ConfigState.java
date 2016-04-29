@@ -4,9 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.R;
-import com.example.oyvin.zuiq.controllers.ConfigController;
+import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.sprites.CancelBtn;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
 import com.example.oyvin.zuiq.sprites.StartBtn;
@@ -187,14 +186,7 @@ public class ConfigState extends BackgroundState {
     //Removing listeners on switch state action
     public void switchState(State state){
         super.switchState(state);
-        removeTouchListener(addPlayer);
-        removeTouchListener(removePlayer);
-        removeTouchListener(addSecond);
-        removeTouchListener(removeSecond);
-        removeTouchListener(addQuestion);
-        removeTouchListener(removeQuestion);
-        removeTouchListener(addScore);
-        removeTouchListener(removeScore);
+
     }
 }
 

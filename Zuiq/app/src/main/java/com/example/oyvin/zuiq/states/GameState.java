@@ -3,20 +3,16 @@ package com.example.oyvin.zuiq.states;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.helpers.Highscore;
-import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
 import com.example.oyvin.zuiq.sprites.CancelBtn;
 import com.example.oyvin.zuiq.sprites.ReadyBtn;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Random;
 
 import sheep.graphics.Image;
 
@@ -106,9 +102,6 @@ public class GameState extends BackgroundState {
         anspaints.add(ans4Paint);
 
         this.addTouchListener(cancelBtn);
-
-        //Tells the static model ZiuqGame to generate questions based on the game rules.
-        ZiuqGame.selectQuestions(new Random());
 
         //Controller
         controller = new GameController(this);
