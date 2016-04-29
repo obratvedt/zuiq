@@ -30,12 +30,14 @@ public class Highscore {
 		});
 	}
 
-	public String getHighscore(){
+	public ArrayList<String> getHighscore(){
+		ArrayList<String> arr = new ArrayList<>();
 		String str = "";
 		
 		for (int r = 0; r < players.size(); r++) {
-			str += players.get(r).getName() + ": " + players.get(r).getScore() + " \n";
+			str = players.get(r).getName() + ": " + players.get(r).getScore();
+			arr.add(str);
 		}
-		return str;
+		return arr;
 	}
 }

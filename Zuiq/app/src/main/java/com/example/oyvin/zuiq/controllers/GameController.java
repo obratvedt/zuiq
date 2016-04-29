@@ -139,8 +139,7 @@ public class GameController {
             }
             else {
                 if (game.state.equals("p")) {
-                    secondsLeft = 5;
-                    startCountdown();
+
                 }
 
                 else if (game.state.equals("q")) {
@@ -156,6 +155,15 @@ public class GameController {
                         }
                     }
                     else {
+                        for (int i = 0; i < thisQuestion.getAnswers().size(); i++) {
+                            ansButtons.get(i).text = thisQuestion.getAnswers().get(i).toString();
+                            if (thisQuestion.getAnswers().get(i).equals(thisQuestion.getRightAnswer())) {
+                                ansButtons.get(i).correct = "correct";
+                            }
+                            else {
+                                ansButtons.get(i).correct = "incorrect";
+                            }
+                        }
                         secondsLeft = ZiuqGame.getTimeLimit();
                         startCountdown();
                     }

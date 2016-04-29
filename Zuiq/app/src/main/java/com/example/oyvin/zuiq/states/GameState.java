@@ -11,6 +11,7 @@ import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.helpers.Highscore;
 import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
+import com.example.oyvin.zuiq.sprites.ReadyBtn;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class GameState extends BackgroundState {
     private static GameState gameState = null;
     public Canvas thisCanvas;
     public AnswerBtn ans1, ans2, ans3, ans4;
+    public ReadyBtn rdy;
     public GameController controller;
     public String state;
     Paint playerPaint;
@@ -46,6 +48,7 @@ public class GameState extends BackgroundState {
         ans2 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans3 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans4 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
+        rdy = new ReadyBtn(new Image(R.drawable.optionbtn));
 
         ansbtns.add(ans1);
         ansbtns.add(ans2);
@@ -95,6 +98,9 @@ public class GameState extends BackgroundState {
         ans3.setPosition(canvas.getWidth() / 2 - 250, canvas.getHeight() / 1.5f);
         ans4.setPosition(canvas.getWidth() / 2 + 250, canvas.getHeight() / 1.5f);
 
+        rdy.setScale(0.2f, 0.2f);
+        rdy.setPosition(thisCanvas.getWidth() / 2, thisCanvas.getHeight()/1.5f);
+
 
         if (controller.inst == false) {
             controller.init();
@@ -108,6 +114,8 @@ public class GameState extends BackgroundState {
                 this.addTouchListener(ans2);
                 this.addTouchListener(ans3);
                 this.addTouchListener(ans4);
+                this.removeTouchListener(rdy);
+
                 drawQuestion();
             }
             else if (state.equals("p")) {
@@ -123,6 +131,8 @@ public class GameState extends BackgroundState {
                 this.removeTouchListener(ans2);
                 this.removeTouchListener(ans3);
                 this.removeTouchListener(ans4);
+                this.removeTouchListener(rdy);
+
                 drawScore();
             }
             else if (state.equals("hs")) {
@@ -130,15 +140,25 @@ public class GameState extends BackgroundState {
                 this.removeTouchListener(ans2);
                 this.removeTouchListener(ans3);
                 this.removeTouchListener(ans4);
-                drawScore();
+                this.removeTouchListener(rdy);
+
+                drawHighScore();
             }
         }
     }
 
     public void drawPause() {
+        this.addTouchListener(rdy);
+
         thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
+
+        rdy.draw(thisCanvas);
     }
 
+    public void drawHighScore () {
+        thisCanvas.drawText("GAME FINISHED", thisCanvas.getWidth() / 4, thisCanvas.getHeight()/5, playerPaint);
+        drawScore();
+    }
     public void drawQuestion () {
         ans1.draw(thisCanvas);
         ans2.draw(thisCanvas);
@@ -154,14 +174,18 @@ public class GameState extends BackgroundState {
 
         thisCanvas.drawText(controller.thisQuestion.getText(), thisCanvas.getWidth()/10, thisCanvas.getHeight()/5, QuestionPaint);
 
-        //if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-100, thisCanvas.getHeight()/10, TimerPaint);
+        if (ZiuqGame.getTimeLimit() != 0) thisCanvas.drawText(""+controller.secondsLeft, thisCanvas.getWidth()-100, thisCanvas.getHeight()/10, TimerPaint);
 
 
     }
 
     public void drawScore () {
+
+
         Highscore hi = new Highscore(new ArrayList<>(ZiuqGame.getPlayers()));
-        thisCanvas.drawText(hi.getHighscore(), thisCanvas.getWidth()/5, thisCanvas.getHeight()/2, playerPaint);
+        for (int i = 0; i < hi.getHighscore().size(); i++) {
+            thisCanvas.drawText(hi.getHighscore().get(i).toString(), thisCanvas.getWidth()/5, (thisCanvas.getHeight()/3)+100*i, playerPaint );
+        }
     }
 
     public void update(float dt) {
