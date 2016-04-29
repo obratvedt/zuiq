@@ -17,37 +17,31 @@ public class PosNegBtn extends Button {
     }
 
     @Override
-    public boolean onTouchDown(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                if (type.equals("addPlayer")){
-                    ConfigController.getInstance().addNumberOfPlayers(1);
-                }
-                else if (type.equals("removePlayer")){
-                    ConfigController.getInstance().addNumberOfPlayers(-1);
-                }
-                else if (type.equals("addSecond")){
-                    ConfigController.getInstance().addNumberOfSeconds(1);
-                }
-                else if(type.equals("removeSecond")){
-                    ConfigController.getInstance().addNumberOfSeconds(-1);
-                }
-                else if(type.equals("addQuestion")){
-                    ConfigController.getInstance().addNumberOfQuestions(1);
-                }
-                else if (type.equals("removeQuestion")){
-                    ConfigController.getInstance().addNumberOfQuestions(-1);
-                }
-                else if (type.equals("addScore")){
-                    ConfigController.getInstance().addScoreLimit(1);
-                }
-                else if (type.equals("removeScore")){
-                    ConfigController.getInstance().addScoreLimit(-1);
-                }
-                return true;
-            }
+    protected void onTouchDownSprite() {
+        if (type.equals("addPlayer")){
+            ConfigController.getInstance().addNumberOfPlayers(1);
         }
-        return false;
+        else if (type.equals("removePlayer")){
+            ConfigController.getInstance().addNumberOfPlayers(-1);
+        }
+        else if (type.equals("addSecond")){
+            ConfigController.getInstance().addNumberOfSeconds(1);
+        }
+        else if(type.equals("removeSecond")){
+            ConfigController.getInstance().addNumberOfSeconds(-1);
+        }
+        else if(type.equals("addQuestion")){
+            ConfigController.getInstance().addNumberOfQuestions(1);
+        }
+        else if (type.equals("removeQuestion")){
+            ConfigController.getInstance().addNumberOfQuestions(-1);
+        }
+        else if (type.equals("addScore")){
+            ConfigController.getInstance().addScoreLimit(1);
+        }
+        else if (type.equals("removeScore")){
+            ConfigController.getInstance().addScoreLimit(-1);
+        }
     }
 
 }

@@ -11,6 +11,11 @@ public class AnswerBtn extends Button {
         this.correct = correct;
     }
 
+    @Override
+    protected void onTouchDownSprite() {
+
+    }
+
     public String getCorrect() {
         return correct;
     }

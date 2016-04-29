@@ -1,7 +1,5 @@
 package com.example.oyvin.zuiq.sprites;
 
-import android.view.MotionEvent;
-
 import com.example.oyvin.zuiq.states.ConfigState;
 import com.example.oyvin.zuiq.states.GameState;
 import com.example.oyvin.zuiq.states.GameModeState;
@@ -20,20 +18,12 @@ public class StartBtn extends Button {
         //this.imageWidth = image.getWidth()/4; ???
     }
 
-    @Override
-    public boolean onTouchDown(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                if (state == "config") {
-                    StartState.getInstance().switchState(GameModeState.getInstance());
-                    return true;
-                }
-                else if (state == "start") {
-                    ConfigState.getInstance().switchState(GameState.getInstance());
-                }
-            }
+    protected void onTouchDownSprite() {
+        if (state.equals("config")) {
+            StartState.getInstance().switchState(GameModeState.getInstance());
         }
-        return false;
+        else if (state.equals("start")) {
+            ConfigState.getInstance().switchState(GameState.getInstance());
+        }
     }
-
 }
