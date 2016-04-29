@@ -66,6 +66,7 @@ public class ConfigState extends BackgroundState {
 
         setPositionOfSprites(canvas);
 
+
         if(ZiuqGame.isQuestionnaire()){
             drawQuestionnaire(canvas);
         }
