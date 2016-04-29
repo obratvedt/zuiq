@@ -14,8 +14,6 @@ public class StartBtn extends Button {
     public StartBtn(Image image, String state){
         super(image, 0.4f, 0.4f);
         this.state = state;
-        //this.imageHeight = image.getHeight()/4; ???
-        //this.imageWidth = image.getWidth()/4; ???
     }
 
     protected void onTouchDownSprite() {

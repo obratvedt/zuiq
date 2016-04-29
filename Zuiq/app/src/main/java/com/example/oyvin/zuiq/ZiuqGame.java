@@ -117,7 +117,7 @@ public final class ZiuqGame {
 
     public static Question nextQuestion() {
         currentQuestionId++;
-        if (currentQuestionId < maxQuestions)
+        if (currentQuestionId < selectedQuestions.size())
             return selectedQuestions.get(currentQuestionId);
         return null;
     }
