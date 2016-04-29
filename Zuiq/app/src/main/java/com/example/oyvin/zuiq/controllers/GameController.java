@@ -185,12 +185,11 @@ public class GameController {
                 System.out.println("NEW SCORE RACE Q");
                 currentPlayer = 0;
                 currentQuestion += 1;
+                prevQuestion = thisQuestion;
                 thisQuestion = ZiuqGame.nextQuestion();
                 game.state = "s";
                 secondsLeft = 15;
                 startCountdown();
-                System.out.println(ZiuqGame.getQuestions());
-                System.out.println(ZiuqGame.nextQuestion().toString());
             }
             else {
                 if (game.state.equals("p")) {

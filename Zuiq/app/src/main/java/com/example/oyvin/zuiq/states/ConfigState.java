@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import com.example.oyvin.zuiq.ZiuqGame;
 import com.example.oyvin.zuiq.R;
 import com.example.oyvin.zuiq.controllers.ConfigController;
+import com.example.oyvin.zuiq.sprites.CancelBtn;
 import com.example.oyvin.zuiq.sprites.PosNegBtn;
 import com.example.oyvin.zuiq.sprites.StartBtn;
 
@@ -18,6 +19,8 @@ public class ConfigState extends BackgroundState {
     Paint dscrtextPaint, varTextPaint, navPaint;
     PosNegBtn addPlayer, removePlayer, addSecond, removeSecond, addQuestion, removeQuestion, addScore, removeScore;
     StartBtn startGame;
+    CancelBtn cancelBtn;
+
 
     private ConfigState(){
         super();
@@ -48,6 +51,9 @@ public class ConfigState extends BackgroundState {
         navPaint = new Paint();
         navPaint.setColor(Color.BLACK);
         navPaint.setTextSize(100);
+        cancelBtn = new CancelBtn(new Image(R.drawable.btn_cancel));
+        this.addTouchListener(cancelBtn);
+
     }
 
     public static ConfigState getInstance(){
@@ -59,6 +65,9 @@ public class ConfigState extends BackgroundState {
 
     public void draw(Canvas canvas){
         super.draw(canvas);
+
+        cancelBtn.setPosition(canvas.getWidth()/9, canvas.getHeight()/9);
+        cancelBtn.draw(canvas);
         drawText(canvas);
 
         setPositionOfSprites(canvas);
@@ -102,7 +111,6 @@ public class ConfigState extends BackgroundState {
         addSecond.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 1.5f + 110);
         removeSecond.setPosition(canvas.getWidth() / 2 - 200, canvas.getHeight() / 1.5f + 110);
         startGame.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 5);
-        //startGame.setScale(0.2f, 0.2f);
         addPlayer.draw(canvas);
         removePlayer.draw(canvas);
         addSecond.draw(canvas);
@@ -130,6 +138,7 @@ public class ConfigState extends BackgroundState {
         addScore.update(dt);
         removeScore.update(dt);
         startGame.update(dt);
+        cancelBtn.update(dt);
     }
 
     public void drawText(Canvas canvas){

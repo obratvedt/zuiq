@@ -11,6 +11,7 @@ import com.example.oyvin.zuiq.controllers.GameController;
 import com.example.oyvin.zuiq.helpers.Highscore;
 import com.example.oyvin.zuiq.models.Question;
 import com.example.oyvin.zuiq.sprites.AnswerBtn;
+import com.example.oyvin.zuiq.sprites.CancelBtn;
 import com.example.oyvin.zuiq.sprites.ReadyBtn;
 
 import java.sql.Time;
@@ -26,6 +27,7 @@ public class GameState extends BackgroundState {
     public ReadyBtn rdy;
     public GameController controller;
     public String state;
+    public CancelBtn cancelBtn;
     Paint playerPaint;
     Paint ans1Paint, ans2Paint, ans3Paint, ans4Paint;
     Paint QuestionPaint;
@@ -52,6 +54,7 @@ public class GameState extends BackgroundState {
         ans3 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans4 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         rdy = new ReadyBtn(new Image(R.drawable.startbtn));
+        cancelBtn = new CancelBtn(new Image(R.drawable.btn_cancel));
 
         ansbtns.add(ans1);
         ansbtns.add(ans2);
@@ -83,6 +86,7 @@ public class GameState extends BackgroundState {
         anspaints.add(ans3Paint);
         anspaints.add(ans4Paint);
 
+        this.addTouchListener(cancelBtn);
         ZiuqGame.selectQuestions(new Random());
         controller = new GameController(this);
     }
@@ -96,6 +100,9 @@ public class GameState extends BackgroundState {
         ans3.setPosition(canvas.getWidth() / 2 - 300, canvas.getHeight() / 1.5f);
         ans4.setPosition(canvas.getWidth() / 2 + 300, canvas.getHeight() / 1.5f);
         rdy.setPosition(canvas.getWidth() / 2, canvas.getHeight() / 1.5f);
+        cancelBtn.setPosition(canvas.getWidth()/9, canvas.getHeight()/9);
+        cancelBtn.draw(canvas);
+
 
         if (controller.inst == false) {
             controller.init();
@@ -229,5 +236,6 @@ public class GameState extends BackgroundState {
         ans3.update(dt);
         ans4.update(dt);
         rdy.update(dt);
+        cancelBtn.update(dt);
     }
 }
