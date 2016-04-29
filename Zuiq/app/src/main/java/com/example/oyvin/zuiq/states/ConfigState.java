@@ -22,6 +22,11 @@ public class ConfigState extends BackgroundState {
     CancelBtn cancelBtn;
 
 
+    //CONSTRUCTOR
+    //
+    //This is where the different buttons, paints and listeners are made for the config mode.
+    //
+    //---------------------------->>
     private ConfigState(){
         super();
         addPlayer = new PosNegBtn(new Image(R.drawable.optionbtn), "addPlayer");
@@ -55,7 +60,10 @@ public class ConfigState extends BackgroundState {
         this.addTouchListener(cancelBtn);
 
     }
+    //<<----------------------------
 
+
+    //STATE
     public static ConfigState getInstance(){
         if (configState == null){
             configState = new ConfigState();
@@ -63,26 +71,41 @@ public class ConfigState extends BackgroundState {
         return configState;
     }
 
+
+    //DRAW
+    //
+    //This is where the buttons, text and number fields are drawn
+    //
+    //---------------------------->>
     public void draw(Canvas canvas){
         super.draw(canvas);
 
-        cancelBtn.setPosition(canvas.getWidth()/9, canvas.getHeight()/9);
+        cancelBtn.setPosition(canvas.getWidth()/9, canvas.getHeight() / 9);
         cancelBtn.draw(canvas);
         drawText(canvas);
 
         setPositionOfSprites(canvas);
 
 
+        //If the current gamemode is questionnaire
         if(ZiuqGame.isQuestionnaire()){
             drawQuestionnaire(canvas);
         }
+        //If the current gamemode is score race
         else {
             drawScoreRace(canvas);
         }
 
     }
+    //<<----------------------------
 
 
+    //DRAW QUESTIONNAIRE
+    //
+    //If the gamemode selected is questionnaire, this draw method will draw the
+    //fields significant for the questionnaire game mode (Question amount).
+    //
+    //---------------------------->>
     public void drawQuestionnaire(Canvas canvas){
         canvas.drawText("No of questions", canvas.getWidth() / 2 - 100, canvas.getHeight() / 1.2f, dscrtextPaint);
         canvas.drawText("" + ZiuqGame.getMaxQuestions(), canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
@@ -93,7 +116,14 @@ public class ConfigState extends BackgroundState {
         canvas.drawText(">", addQuestion.getX() - 20, addQuestion.getY() + 25, navPaint);
         canvas.drawText("<", removeQuestion.getX() - 20, addQuestion.getY() + 25, navPaint);
     }
+    //<<----------------------------
 
+    //DRAW QUESTIONNAIRE
+    //
+    //If the gamemode selected is score race, this draw method will draw the
+    //fields significant for the score race game mode (Score limit).
+    //
+    //---------------------------->>
     public void drawScoreRace(Canvas canvas){
         canvas.drawText("Score limit", canvas.getWidth() / 2 - 100, canvas.getHeight() / 1.2f, dscrtextPaint);
         canvas.drawText("" + ZiuqGame.getMaxPoints(), canvas.getWidth() / 2, canvas.getHeight() / 1.1f, varTextPaint);
@@ -104,8 +134,11 @@ public class ConfigState extends BackgroundState {
         canvas.drawText(">", addScore.getX() - 20, addScore.getY() + 25, navPaint);
         canvas.drawText("<", removeScore.getX() - 20, removeScore.getY() + 25, navPaint);
     }
+    //<<----------------------------
+
 
     public void setPositionOfSprites(Canvas canvas){
+        //Setting positions of sprites
         addPlayer.setPosition(canvas.getWidth()/2 +200, canvas.getHeight()/2);
         removePlayer.setPosition(canvas.getWidth()/2-200, canvas.getHeight()/2);
         addSecond.setPosition(canvas.getWidth() / 2 + 200, canvas.getHeight() / 1.5f + 110);
@@ -118,6 +151,7 @@ public class ConfigState extends BackgroundState {
         startGame.draw(canvas);
 
 
+        //Drawing the text on the add/remove buttons
         canvas.drawText(">", addSecond.getX() - 20, addSecond.getY() + 25, navPaint);
         canvas.drawText(">", addPlayer.getX() - 20, addPlayer.getY() + 25, navPaint);
 
@@ -127,6 +161,7 @@ public class ConfigState extends BackgroundState {
 
     }
 
+    //UPDATE
     public void update(float dt){
         super.update(dt);
         addPlayer.update(dt);
@@ -141,6 +176,7 @@ public class ConfigState extends BackgroundState {
         cancelBtn.update(dt);
     }
 
+    //Draw the description text for the different fields
     public void drawText(Canvas canvas){
         canvas.drawText("Select no. of players", canvas.getWidth() / 2 - 200, canvas.getHeight() / 2 - 110, dscrtextPaint);
         canvas.drawText("" + ZiuqGame.getMaxPlayers(), canvas.getWidth() / 2, canvas.getHeight() / 2, varTextPaint);
@@ -148,6 +184,7 @@ public class ConfigState extends BackgroundState {
         canvas.drawText("" + ZiuqGame.getTimeLimit(), canvas.getWidth()/2, canvas.getHeight()/1.5f+110, varTextPaint);
     }
 
+    //Removing listeners on switch state action
     public void switchState(State state){
         super.switchState(state);
         removeTouchListener(addPlayer);

@@ -20,6 +20,11 @@ public class ConfigController {
         return instance;
     }
 
+    //SETTING GAME RULES
+    //
+    //This section of the config controller will set the different settings for the game
+    //
+    //---------------------------->>
     public void addNumberOfPlayers(int add) {
         ZiuqGame.setMaxPlayers(ZiuqGame.getMaxPlayers() + add);
     }
@@ -35,5 +40,6 @@ public class ConfigController {
     public void addScoreLimit(int add) {
         ZiuqGame.addMaxPoints(add);
     }
+    //<<----------------------------
 
 }
