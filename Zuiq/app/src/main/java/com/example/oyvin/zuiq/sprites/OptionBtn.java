@@ -18,15 +18,9 @@ public class OptionBtn extends Button {
     }
 
     @Override
-    public boolean onTouchDown(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            if (touchOnSprite(motionEvent.getX(), motionEvent.getY())){
-                ZiuqGame.setQuestionnaire(gameMode);
-                GameModeState.getInstance().switchState(ConfigState.getInstance());
-                return true;
-            }
-        }
-        return false;
+    protected void onTouchDownSprite() {
+        ZiuqGame.setQuestionnaire(gameMode);
+        GameModeState.getInstance().switchState(ConfigState.getInstance());
     }
 
 }

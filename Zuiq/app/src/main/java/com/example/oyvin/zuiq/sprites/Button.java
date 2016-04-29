@@ -28,12 +28,15 @@ public abstract class Button extends Sprite implements TouchListener {
     @Override
     public boolean onTouchDown(MotionEvent motionEvent) {
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            if(touchOnSprite(motionEvent.getX(),motionEvent.getY())){
+            if(touchOnSprite(motionEvent.getX(), motionEvent.getY())){
+                onTouchDownSprite();
                 return true;
             }
         }
         return false;
     }
+
+    protected abstract void onTouchDownSprite();
 
     @Override
     public boolean onTouchUp(MotionEvent motionEvent) {
