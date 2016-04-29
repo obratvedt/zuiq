@@ -80,8 +80,6 @@ public class GameState extends BackgroundState {
         anspaints.add(ans3Paint);
         anspaints.add(ans4Paint);
 
-        this.addTouchListener(rdy);
-
         ZiuqGame.selectQuestions(new Random());
         controller = new GameController(this);
     }
@@ -121,12 +119,13 @@ public class GameState extends BackgroundState {
                 drawQuestion();
             }
             else if (state.equals("p")) {
-
                 this.removeTouchListener(ans1);
                 this.removeTouchListener(ans2);
                 this.removeTouchListener(ans3);
                 this.removeTouchListener(ans4);
+                this.addTouchListener(rdy);
                 drawPause();
+
             }
 
             else if (state.equals("s")) {
