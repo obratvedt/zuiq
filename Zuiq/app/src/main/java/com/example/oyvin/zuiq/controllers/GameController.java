@@ -111,7 +111,6 @@ public class GameController {
         ZiuqGame.setPlayers(players);
 
 
-        System.out.println("Players " + ZiuqGame.getPlayers().toString());
         game.state = "q";
         thisQuestion = ZiuqGame.nextQuestion();
         play();
@@ -121,11 +120,14 @@ public class GameController {
 
     public void play() {
 
+        /*
         System.out.println("QUESTION " + thisQuestion.getText());
         System.out.println("ANSWERS " + thisQuestion.getAnswers().toString());
         System.out.println("RIGHT " + thisQuestion.getRightAnswer().toString());
+        */
 
         if (ZiuqGame.isQuestionnaire()) {
+            //QUESTIONNAIRE GAMEMODE
             if (currentPlayer >= ZiuqGame.getPlayers().size() && currentQuestion >= ZiuqGame.getMaxQuestions()) {
                 game.state = "hs";
             }
@@ -176,6 +178,54 @@ public class GameController {
         }
 
         else {
+            //SCORE RACE GAMEMODE
+            if (currentPlayer >= ZiuqGame.getPlayers().size()) {
+                System.out.println("NEW SCORE RACE Q");
+                currentPlayer = 0;
+                currentQuestion += 1;
+                thisQuestion = ZiuqGame.nextQuestion();
+                game.state = "s";
+                secondsLeft = 15;
+                startCountdown();
+                System.out.println(ZiuqGame.getQuestions());
+                System.out.println(ZiuqGame.nextQuestion().toString());
+            }
+            else {
+                if (game.state.equals("p")) {
+
+                }
+
+                else if (game.state.equals("q")) {
+                    if (ZiuqGame.getTimeLimit() == 0) {
+                        for (int i = 0; i < thisQuestion.getAnswers().size(); i++) {
+                            ansButtons.get(i).setText(thisQuestion.getAnswers().get(i).toString());
+                            if (thisQuestion.getAnswers().get(i).equals(thisQuestion.getRightAnswer())) {
+                                ansButtons.get(i).setCorrect("correct");
+                            }
+                            else {
+                                ansButtons.get(i).setCorrect("incorrect");
+                            }
+                        }
+                    }
+                    else {
+                        for (int i = 0; i < thisQuestion.getAnswers().size(); i++) {
+                            ansButtons.get(i).setText(thisQuestion.getAnswers().get(i).toString());
+                            if (thisQuestion.getAnswers().get(i).equals(thisQuestion.getRightAnswer())) {
+                                ansButtons.get(i).setCorrect("correct");
+                            }
+                            else {
+                                ansButtons.get(i).setCorrect("incorrect");
+                            }
+                        }
+                        secondsLeft = ZiuqGame.getTimeLimit();
+                        startCountdown();
+                    }
+
+                }
+
+                else {
+                }
+            }
 
         }
 
@@ -188,10 +238,16 @@ public class GameController {
         if (str.equals("correct")) {
             System.out.println("Correct answer");
             ZiuqGame.getPlayers().get(currentPlayer).setScore(ZiuqGame.getPlayers().get(currentPlayer).getScore() + 1);
-            currentPlayer += 1;
-            game.state = "p";
-            if (ZiuqGame.getTimeLimit() != 0) timer.cancel();
-            play();
+            if (ZiuqGame.getPlayers().get(currentPlayer).getScore() >= ZiuqGame.getMaxPoints() && !ZiuqGame.isQuestionnaire()) {
+                game.state = "hs";
+            }
+            else {
+                currentPlayer += 1;
+                game.state = "p";
+                if (ZiuqGame.getTimeLimit() != 0) timer.cancel();
+                play();
+            }
+
 
         } else if (str.equals("incorrect")) {
             System.out.println("Incorrect answer");

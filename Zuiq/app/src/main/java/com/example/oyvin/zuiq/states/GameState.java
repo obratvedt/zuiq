@@ -51,7 +51,7 @@ public class GameState extends BackgroundState {
         ans2 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans3 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
         ans4 = new AnswerBtn(new Image(R.drawable.optionbtn), "incorrect");
-        rdy = new ReadyBtn(new Image(R.drawable.optionbtn));
+        rdy = new ReadyBtn(new Image(R.drawable.startbtn));
 
         ansbtns.add(ans1);
         ansbtns.add(ans2);
@@ -91,29 +91,18 @@ public class GameState extends BackgroundState {
         super.draw(canvas);
         thisCanvas = canvas;
 
-        ans1.setScale(0.4f, 0.4f);
-        ans2.setScale(0.4f, 0.4f);
-        ans3.setScale(0.4f, 0.4f);
-        ans4.setScale(0.4f, 0.4f);
-
-        ans1.setPosition(canvas.getWidth() / 2 - 250, canvas.getHeight() / 3);
-        ans2.setPosition(canvas.getWidth() / 2 + 250, canvas.getHeight() / 3);
-        ans3.setPosition(canvas.getWidth() / 2 - 250, canvas.getHeight() / 1.5f);
-        ans4.setPosition(canvas.getWidth() / 2 + 250, canvas.getHeight() / 1.5f);
-
-        rdy.setScale(0.2f, 0.2f);
+        ans1.setPosition(canvas.getWidth() / 2 - 300, canvas.getHeight() / 3);
+        ans2.setPosition(canvas.getWidth() / 2 + 300, canvas.getHeight() / 3);
+        ans3.setPosition(canvas.getWidth() / 2 - 300, canvas.getHeight() / 1.5f);
+        ans4.setPosition(canvas.getWidth() / 2 + 300, canvas.getHeight() / 1.5f);
         rdy.setPosition(canvas.getWidth() / 2, canvas.getHeight()/1.5f);
-
 
         if (controller.inst == false) {
             controller.init();
             controller.inst = true;
         }
-
         else {
-
             if (state.equals("q")) {
-
                 if (!answerListeners) {
                     this.addTouchListener(ans1);
                     this.addTouchListener(ans2);
@@ -184,7 +173,7 @@ public class GameState extends BackgroundState {
 
     public void drawPause() {
         thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
-
+        System.out.println("AJDIPDJAIJDIS");
         rdy.draw(thisCanvas);
     }
 
@@ -200,7 +189,7 @@ public class GameState extends BackgroundState {
 
         for (int i = 0; i < anspaints.size(); i++) {
             anspaints.get(i).setTextSize(75 -  (1.4f*ansbtns.get(i).getText().length()));
-            thisCanvas.drawText(ansbtns.get(i).getText(), ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/6, ansbtns.get(i).getY(), anspaints.get(i));
+            thisCanvas.drawText(ansbtns.get(i).getText(), ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/3, ansbtns.get(i).getY(), anspaints.get(i));
         }
 
         QuestionPaint.setTextSize(100 - 0.9f * controller.thisQuestion.getText().length());
@@ -227,5 +216,6 @@ public class GameState extends BackgroundState {
         ans2.update(dt);
         ans3.update(dt);
         ans4.update(dt);
+        rdy.update(dt);
     }
 }
