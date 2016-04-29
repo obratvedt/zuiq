@@ -15,7 +15,7 @@ public class CancelBtn extends Button {
 
     @Override
     protected void onTouchDownSprite() {
-        new AlertDialog.Builder(ConfigState.getInstance().getGame().getContext())
+        new AlertDialog.Builder(ZiuqGame.getContext())
                 .setTitle("Cancel game")
                 .setMessage("Are you sure you want to cancel this game? This cannot be undone")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
