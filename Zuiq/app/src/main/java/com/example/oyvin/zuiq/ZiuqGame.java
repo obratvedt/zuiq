@@ -34,7 +34,7 @@ public final class ZiuqGame {
     }
 
     public static void setMaxPlayers(int newMaxPlayers) {
-        if (newMaxPlayers > 0)
+        if (newMaxPlayers > 0 && newMaxPlayers <= 5)
             maxPlayers = newMaxPlayers;
     }
 
