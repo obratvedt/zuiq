@@ -10,7 +10,7 @@ import java.util.Random;
 public final class ZiuqGame {
 
     private static ArrayList<Player> players;
-    private static int maxPlayers;
+    private static int maxPlayers = 1;
     private static ArrayList<Question> questions;
     private static ArrayList<Question> selectedQuestions;
     private static boolean questionnaire;
@@ -34,7 +34,8 @@ public final class ZiuqGame {
     }
 
     public static void setMaxPlayers(int newMaxPlayers) {
-        maxPlayers = newMaxPlayers;
+        if (newMaxPlayers > 0 && newMaxPlayers <= 5)
+            maxPlayers = newMaxPlayers;
     }
 
     public static ArrayList<Question> getQuestions() {
@@ -80,7 +81,7 @@ public final class ZiuqGame {
     }
 
     public static void setMaxQuestions(int newMaxQuestions) {
-        if (newMaxQuestions <= questions.size())
+        if (newMaxQuestions <= questions.size() && newMaxQuestions > 0)
             maxQuestions = newMaxQuestions;
     }
 
@@ -108,6 +109,18 @@ public final class ZiuqGame {
         if (currentQuestionId < maxQuestions)
             return selectedQuestions.get(currentQuestionId);
         return null;
+    }
+
+    public static void resetGame() {
+        players = new ArrayList<>();
+        maxPlayers = 1;
+        questions = new ArrayList<>();
+        selectedQuestions = new ArrayList<>();
+        questionnaire = false;
+        timeLimit = 0;
+        maxPoints = 10;
+        maxQuestions = questions.size();
+        currentQuestionId = -1;
     }
 
 }

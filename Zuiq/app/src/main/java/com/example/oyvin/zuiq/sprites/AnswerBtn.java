@@ -5,59 +5,40 @@ import android.view.MotionEvent;
 import com.example.oyvin.zuiq.states.GameState;
 
 import sheep.game.Sprite;
-import sheep.graphics.Image;
-import sheep.input.TouchListener;
 
-public class AnswerBtn extends Sprite implements TouchListener {
-    float imageHeight,imageWidth;
-    public String correct;
-    public String text = "";
+import sheep.graphics.Image;
+
+public class AnswerBtn extends Button {
+
+    private String correct;
+    private String text = "";
 
     public AnswerBtn(Image image, String correct){
-        super(image);
+        super(image, 0.5f, 0.5f);
         this.correct = correct;
-        this.imageHeight = image.getHeight()/2;
-        this.imageWidth = image.getWidth()/2;
-        setScale(0.5f, 0.5f);
-    }
 
-    public float getImageWidth() {
-        return imageWidth;
-    }
-
-    public float getImageHeight() {
-        return imageHeight;
     }
 
 
-    @Override
-    public boolean onTouchDown(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+    protected void onTouchDownSprite() {
+        GameState.getInstance().controller.isCorrect(correct);
 
-            if(touchOnSprite(motionEvent.getX(),motionEvent.getY())){
-                GameState.getInstance().controller.isCorrect(correct);
-                return true;
-            }
-        }
-        return false;
     }
 
-    @Override
-    public boolean onTouchUp(MotionEvent motionEvent) {
-        return false;
+    public String getCorrect() {
+        return correct;
     }
 
-    @Override
-    public boolean onTouchMove(MotionEvent motionEvent) {
-        return false;
+    public String getText () {
+        return text;
     }
 
-    private boolean touchOnSprite(float xPos, float yPos) {
-        if (xPos >= getX() - getImageHeight() / 2 && xPos <= getX() + getImageWidth() / 2) {
-            if (yPos >= getY() - getImageHeight() / 2 && yPos <= getY() + getImageHeight() / 2) {
-                return true;
-            }
-        }
-        return false;
+    public void setCorrect(String correct) {
+        this.correct = correct;
     }
+
+    public void setText (String text) {
+        this.text = text;
+    }
+
 }

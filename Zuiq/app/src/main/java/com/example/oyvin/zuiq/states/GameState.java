@@ -166,8 +166,8 @@ public class GameState extends BackgroundState {
         ans4.draw(thisCanvas);
 
         for (int i = 0; i < anspaints.size(); i++) {
-            anspaints.get(i).setTextSize(75 -  (1.4f*ansbtns.get(i).text.length()));
-            thisCanvas.drawText(ansbtns.get(i).text, ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/3, ansbtns.get(i).getY(), anspaints.get(i));
+            anspaints.get(i).setTextSize(75 -  (1.4f*ansbtns.get(i).getText().length()));
+            thisCanvas.drawText(ansbtns.get(i).getText(), ansbtns.get(i).getX() - ansbtns.get(i).getImageWidth()/6, ansbtns.get(i).getY(), anspaints.get(i));
         }
 
         QuestionPaint.setTextSize(100 - 0.9f * controller.thisQuestion.getText().length());

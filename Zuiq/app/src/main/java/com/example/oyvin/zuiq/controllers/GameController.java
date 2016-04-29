@@ -145,23 +145,23 @@ public class GameController {
                 else if (game.state.equals("q")) {
                     if (ZiuqGame.getTimeLimit() == 0) {
                         for (int i = 0; i < thisQuestion.getAnswers().size(); i++) {
-                            ansButtons.get(i).text = thisQuestion.getAnswers().get(i).toString();
+                            ansButtons.get(i).setText(thisQuestion.getAnswers().get(i).toString());
                             if (thisQuestion.getAnswers().get(i).equals(thisQuestion.getRightAnswer())) {
-                                ansButtons.get(i).correct = "correct";
+                                ansButtons.get(i).setCorrect("correct");
                             }
                             else {
-                                ansButtons.get(i).correct = "incorrect";
+                                ansButtons.get(i).setCorrect("incorrect");
                             }
                         }
                     }
                     else {
                         for (int i = 0; i < thisQuestion.getAnswers().size(); i++) {
-                            ansButtons.get(i).text = thisQuestion.getAnswers().get(i).toString();
+                            ansButtons.get(i).setText(thisQuestion.getAnswers().get(i).toString());
                             if (thisQuestion.getAnswers().get(i).equals(thisQuestion.getRightAnswer())) {
-                                ansButtons.get(i).correct = "correct";
+                                ansButtons.get(i).setCorrect("correct");
                             }
                             else {
-                                ansButtons.get(i).correct = "incorrect";
+                                ansButtons.get(i).setCorrect("incorrect");
                             }
                         }
                         secondsLeft = ZiuqGame.getTimeLimit();
