@@ -71,7 +71,7 @@ public final class ZiuqGame {
     }
 
     public static void setMaxPoints(int newMaxPoints) {
-        if (newMaxPoints >= 10 && newMaxPoints <= 100)
+        if (newMaxPoints >= 10 && newMaxPoints <= (questions.size() * 50))
             maxPoints = newMaxPoints;
     }
 
