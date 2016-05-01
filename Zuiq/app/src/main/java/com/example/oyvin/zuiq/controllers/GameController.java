@@ -48,9 +48,9 @@ public class GameController {
 
     private Map<Integer, Player> players = new HashMap<>();
 
-    public boolean inst = false;
-    public int currentPlayer = 0;
-    public int currentQuestion = 1;
+    private boolean inst = false;
+    private int currentPlayer = 0;
+    private int currentQuestion = 1;
 
     //<<----------------------------
 
@@ -93,20 +93,20 @@ public class GameController {
 
     public void timesUp() {
         timer.cancel();
-        if (game.state.equals("q")) {
-            game.state = "p";
+        if (game.getState().equals("q")) {
+            game.setState("p");
             currentPlayer += 1;
             play();
         }
-        else if (game.state.equals("p")) {
-            game.state = "q";
+        else if (game.getState().equals("p")) {
+            game.setState("q");
             play();
         }
-        else if (game.state.equals("s")) {
-            game.state = "q";
+        else if (game.getState().equals("s")) {
+            game.setState("q");
             play();
         }
-        else if (game.state.equals("stop")){
+        else if (game.getState().equals("stop")){
             //quit game
         }
         else {
@@ -145,19 +145,16 @@ public class GameController {
     //---------------------------->>
     public void init() {
         ZiuqGame.selectQuestions(new Random());
-        canvas = game.thisCanvas;
+        canvas = game.getThisCanvas();
         ArrayList<Player> players = new ArrayList<>();
         for (int i = 0; i < ZiuqGame.getMaxPlayers(); i++) {
             Player player = new Player("Player" + (i + 1));
             players.add(player);
         }
-        ansButtons.add(game.ans1);
-        ansButtons.add(game.ans2);
-        ansButtons.add(game.ans3);
-        ansButtons.add(game.ans4);
+        ansButtons = game.getAnsbtns();
         ZiuqGame.setPlayers(players);
 
-        game.state = "q";
+        game.setState("q");
         thisQuestion = ZiuqGame.nextQuestion();
         play();
     }
@@ -180,7 +177,7 @@ public class GameController {
         //
         //For the winning criteria for Score Race please see WINNING CRITERIA SCORE RACE below.
         if (currentPlayer >= ZiuqGame.getPlayers().size() && ZiuqGame.isQuestionnaire() && currentQuestion >= ZiuqGame.getMaxQuestions()) {
-            game.state = "hs";
+            game.setState("hs");
         }
 
         //Have all players answered - this means that the current round is over,
@@ -190,19 +187,19 @@ public class GameController {
             currentQuestion += 1;
             prevQuestion = thisQuestion;
             thisQuestion = ZiuqGame.nextQuestion();
-            game.state = "s";
+            game.setState("s");
             secondsLeft = 15;
             startCountdown();
         }
         else {
 
             //Do nothing if in pause state
-            if (game.state.equals("p")) {
+            if (game.getState().equals("p")) {
 
             }
 
             //If the game is in question state
-            else if (game.state.equals("q")) {
+            else if (game.getState().equals("q")) {
 
                 //ANSWER BUTTONS
                 //
@@ -293,13 +290,13 @@ public class GameController {
             //ends and a winner is crowned.
             if (ZiuqGame.getPlayers().get(currentPlayer).getScore() >= ZiuqGame.getMaxPoints() && !ZiuqGame.isQuestionnaire()) {
                 System.out.println(ZiuqGame.getMaxPoints());
-                game.state = "hs";
+                game.setState("hs");
             }
 
             //If there is no winner crowned, carry on as usual (increase player index)
             else {
                 currentPlayer += 1;
-                game.state = "p";
+                game.setState("p");
                 if (ZiuqGame.getTimeLimit() != 0) timer.cancel();
                 play();
             }
@@ -311,7 +308,7 @@ public class GameController {
         else if (str.equals("incorrect")) {
             System.out.println("Incorrect answer");
             currentPlayer += 1;
-            game.state = "p";
+            game.setState("p");
             if (ZiuqGame.getTimeLimit() != 0) timer.cancel();
             play();
         }
@@ -337,6 +334,28 @@ public class GameController {
     public int getSecondsLeft() {
         return secondsLeft;
     }
+
+    public boolean getInst() {
+        return inst;
+    }
+
+    public void setInst(boolean value) {
+        inst = value;
+    }
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+    public int getCurrentQuestion() {
+        return currentQuestion;
+    }
+    public void setCurrentPlayer(int p) {
+        currentPlayer = p;
+    }
+    public void setCurrentQuestion(int q) {
+        currentQuestion = q;
+    }
+
     //<<----------------------------
 
 }

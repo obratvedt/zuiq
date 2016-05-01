@@ -27,18 +27,18 @@ public class GameState extends BackgroundState {
     //
     //---------------------------->>
     private static GameState gameState = null;
-    public Canvas thisCanvas;
-    public AnswerBtn ans1, ans2, ans3, ans4;
-    public ReadyBtn rdy;
-    public GameController controller;
-    public String state;
-    public CancelBtn cancelBtn;
+    private Canvas thisCanvas;
+    private AnswerBtn ans1, ans2, ans3, ans4;
+    private ReadyBtn rdy;
+    private GameController controller;
+    private String state;
+    private CancelBtn cancelBtn;
     Paint playerPaint;
     Paint ans1Paint, ans2Paint, ans3Paint, ans4Paint;
     Paint QuestionPaint;
     Paint TimerPaint;
-    public ArrayList<AnswerBtn> ansbtns = new ArrayList<>();
-    public ArrayList<Paint> anspaints = new ArrayList<>();
+    private ArrayList<AnswerBtn> ansbtns = new ArrayList<>();
+    private ArrayList<Paint> anspaints = new ArrayList<>();
 
     private boolean answerListeners = false;
     private boolean pauseListener = false;
@@ -131,9 +131,9 @@ public class GameState extends BackgroundState {
 
 
         //Init controller
-        if (controller.inst == false) {
+        if (controller.getInst() == false) {
             controller.init();
-            controller.inst = true;
+            controller.setInst(true);
         }
 
         //If already init'ed
@@ -217,12 +217,12 @@ public class GameState extends BackgroundState {
     //different parts of the game.
     //
     //---------------------------->>
-    public void drawPause() {
-        thisCanvas.drawText("Pass the device to player " + (controller.currentPlayer + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
+    private void drawPause() {
+        thisCanvas.drawText("Pass the device to player " + (controller.getCurrentPlayer() + 1), thisCanvas.getWidth() / 5 - 100, thisCanvas.getHeight() / 1.2f, playerPaint);
         rdy.draw(thisCanvas);
     }
 
-    public void drawHighScore () {
+    private void drawHighScore () {
 
         //Draw the scores when the game is finished.
         thisCanvas.drawText("GAME FINISHED", thisCanvas.getWidth() / 4, thisCanvas.getHeight() / 5, playerPaint);
@@ -233,7 +233,7 @@ public class GameState extends BackgroundState {
             thisCanvas.drawText(hi.getHighscore().get(i).toString(), thisCanvas.getWidth()/5, (thisCanvas.getHeight()/3)+100*i, playerPaint );
         }
     }
-    public void drawQuestion () {
+    private void drawQuestion () {
         ans1.draw(thisCanvas);
         ans2.draw(thisCanvas);
         ans3.draw(thisCanvas);
@@ -256,7 +256,7 @@ public class GameState extends BackgroundState {
 
     }
 
-    public void drawScore () {
+    private void drawScore () {
 
         //Get a sorted list with the players, sorted by their current score.
         Highscore hi = new Highscore(new ArrayList<>(ZiuqGame.getPlayers()));
@@ -292,4 +292,21 @@ public class GameState extends BackgroundState {
         rdy.update(dt);
         cancelBtn.update(dt);
     }
+
+    public String getState() {
+        return state;
+    }
+    public void setState(String s) {
+        state = s;
+    }
+    public Canvas getThisCanvas() {
+        return thisCanvas;
+    }
+    public ArrayList<AnswerBtn> getAnsbtns() {
+        return ansbtns;
+    }
+    public GameController getController() {
+        return controller;
+    }
+
 }

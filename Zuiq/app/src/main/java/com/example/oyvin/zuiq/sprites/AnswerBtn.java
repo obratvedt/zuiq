@@ -17,7 +17,7 @@ public class AnswerBtn extends Button {
 
 
     protected void onTouchDownSprite() {
-        GameState.getInstance().controller.isCorrect(correct);
+        GameState.getInstance().getController().isCorrect(correct);
 
     }
 

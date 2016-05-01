@@ -21,7 +21,7 @@ public class StartBtn extends Button {
             StartState.getInstance().switchState(GameModeState.getInstance());
         }
         else if (state.equals("start")) {
-            GameState.getInstance().controller.inst = false;
+            GameState.getInstance().getController().setInst(false);
             ConfigState.getInstance().switchState(GameState.getInstance());
         }
     }

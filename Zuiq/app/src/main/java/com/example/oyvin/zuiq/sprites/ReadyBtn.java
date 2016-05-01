@@ -11,9 +11,8 @@ public class ReadyBtn extends Button {
 
 
     protected void onTouchDownSprite() {
-        System.out.println("HDASD");
-        GameState.getInstance().state = "q";
-        GameState.getInstance().controller.play();
+        GameState.getInstance().setState("q");
+        GameState.getInstance().getController().play();
     }
 }
 
