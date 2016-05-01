@@ -159,8 +159,8 @@ public final class ZiuqGame {
         maxQuestions = questions.size();
         currentQuestionId = -1;
 
-        GameState.getInstance().state = "stop";
-        GameState.getInstance().controller.timesUp();
+        GameState.getInstance().setState("stop");
+        GameState.getInstance().getController().timesUp();
         StartState.getInstance().switchState(StartState.getInstance());
 
     }
